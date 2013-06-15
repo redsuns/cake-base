@@ -41,11 +41,11 @@ class AppController extends Controller {
         // Mecanismo de autenticação            
         $this->Auth->authenticate = array('Blowfish' => array(
                 // Configura o model e os campos
-                'userModel' => 'Usuario',
-                'fields' => array(
-                    'username' => 'email',
-                    'password' => 'senha',
-                ),
+                'userModel' => 'User',
+//                'fields' => array(
+//                    'username' => 'email',
+//                    'password' => 'senha',
+//                ),
         ));
         
         
@@ -79,23 +79,6 @@ class AppController extends Controller {
                                     </div>');
         
         parent::beforeFilter();
-    }
-    
-    
-    /**
-     * Default delete method
-     * 
-     * @param \Model $model
-     * @param int $id
-     * @return boolean
-     */
-    public function delete(\Model $model, int $id) {
-        App::uses($model, 'Model');
-        
-        if ( $this->{$model}->delete($id) ) {
-            return true;
-        }
-        return false;
     }
     
 }
