@@ -41,12 +41,23 @@ if ( isset($argv[1]) ) {
     exec("cp -fr app/Test " . $caminhoCopiaArquivos . "/app/");
     echo "\n-- Ok\n";
     
+    echo "\n-- Copiando Plugins\n";
+    exec("cp -fr app/Plugin " . $caminhoCopiaArquivos . "/app/");
+    echo "\n-- Ok\n";
+    
+    echo "\n-- Copiando Schema e database model\n";
+    exec("cp -fr app/Config/Schema/base.mwb " . $caminhoCopiaArquivos . "/app/Config/Schema/");
+    exec("cp -fr app/Config/Schema/schema.php " . $caminhoCopiaArquivos . "/app/Config/Schema/");
+    echo "\n-- Ok\n";
+    
+    
     
     echo "\nOk\n\n";
     
     echo "Aplicando permissões necessárias \n\n";
     exec("chmod -R 777 " . $caminhoCopiaArquivos);
     echo "\nOk\n";
+    
     
     
     echo "\n\nPROCESSO DE CÓPIA FINALIZADO!\n\n";
