@@ -30,7 +30,7 @@ if ( isset($argv[1]) ) {
     echo "\n-- Ok\n";
     
     echo "\n-- Copiando Js\n";
-    exec("cp -fr app/webroot/js/* " . $caminhoCopiaArquivos . "/app/webroot/js/");
+    exec("cp -fr app/webroot/gitk --aljs/* " . $caminhoCopiaArquivos . "/app/webroot/js/");
     echo "\n-- Ok\n";
     
     echo "\n-- Copiando Coverage\n";
