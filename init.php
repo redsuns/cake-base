@@ -52,7 +52,9 @@ class InitBase {
      * 
      */
     public function version() {
-        echo "\n\n-----------------------------------------\nCake Base Init versão " . $this->version . "\n-----------------------------------------\n\n";
+        echo "\n\n-----------------------------------------\n";
+        echo "Cake Base Init versão " . $this->version . "\n";
+        echo "-----------------------------------------\n\n";
     }
     
     /**
