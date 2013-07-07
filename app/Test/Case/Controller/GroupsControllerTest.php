@@ -38,6 +38,13 @@ class GroupsControllerTest extends ControllerTestCase {
             
             $this->assertEquals('Administrator', $this->vars['group']['Group']['name']);
 	}
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testViewWithException() {
+            $this->testAction('/groups/view/asdas');
+        }
 
 /**
  * testAdd method
@@ -65,10 +72,24 @@ class GroupsControllerTest extends ControllerTestCase {
             
             $this->assertNotEqual($this->headers, null);
 	}
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testEditWithExeption() {
+            $this->testAction('/groups/edit/asdsa');
+        }
 
         
         public function testDelete() {
             $this->testAction('/groups/delete/1', array('data' => array('Group.id' => 1), 'method' => 'post'));
             $this->assertNotEqual($this->headers, null);
+        }
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testDeleteWithExeption() {
+            $this->testAction('/groups/delete/asdsa');
         }
 }

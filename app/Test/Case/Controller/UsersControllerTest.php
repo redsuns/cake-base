@@ -50,6 +50,18 @@ class UsersControllerTest extends ControllerTestCase {
             
             $this->assertEquals('Lorem ipsum dolor sit amet', $this->vars['user']['User']['name']);
 	}
+        
+        
+        /**
+ * testView method
+ *
+ * @expectedException NotFoundException
+ */
+	public function testViewWithException() {
+            $result = $this->testAction('/users/view/ass');
+            
+            $this->assertEquals('Lorem ipsum dolor sit amet', $this->vars['user']['User']['name']);
+	}
 
 /**
  * testAdd method
@@ -111,11 +123,27 @@ class UsersControllerTest extends ControllerTestCase {
             
             $this->assertNotEqual($this->headers, null);
 	}
+        
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testEditWithException() {
+            $this->testAction('/users/edit/asds');
+        }
 
         
         public function testDelete() {
             $this->testAction('/users/delete/1', array('data' => array('User.id' => 1), 'method' => 'post'));
             $this->assertNotEqual($this->headers, null);
+        }
+        
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testDeleteWithException() {
+            $this->testAction('/users/delete/asds');
         }
 
 }

@@ -1,521 +1,441 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Cake</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+ <head>
+  <meta charset="UTF-8">
+  <title>Code Coverage for /var/www/redsuns/cake-base/lib/Cake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="span12">
+      <ul class="breadcrumb">
+        <li><a href="index.html">/var/www/redsuns/cake-base</a> <span class="divider">/</span></li>
+        <li><a href="lib.html">lib</a> <span class="divider">/</span></li>
+        <li class="active">Cake</li>
+        <li>(<a href="lib_Cake.dashboard.html">Dashboard</a>)</li>
 
-  <body>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td class="title">Cake</td></tr>
-      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <table class="table table-bordered">
+    <thead>
+     <tr>
+      <td>&nbsp;</td>
+      <td colspan="9"><div align="center"><strong>Code Coverage</strong></div></td>
+     </tr>
+     <tr>
+      <td>&nbsp;</td>
+      <td colspan="3"><div align="center"><strong>Lines</strong></div></td>
+      <td colspan="3"><div align="center"><strong>Functions and Methods</strong></div></td>
+      <td colspan="3"><div align="center"><strong>Classes and Traits</strong></div></td>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="danger">Total</td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 25.22%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">25.22%</div></td>
+      <td class="danger small"><div align="right">3809&nbsp;/&nbsp;15105</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 11.26%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">11.26%</div></td>
+      <td class="danger small"><div align="right">131&nbsp;/&nbsp;1163</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 22.76%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">22.76%</div></td>
+      <td class="danger small"><div align="right">28&nbsp;/&nbsp;123</div></td>
+     </tr>
 
-      <tr>
-        <td width="100%">
-          <table cellpadding="1" border="0" width="100%">
-            <tr>
-              <td class="headerItem" width="20%">Current directory:</td>
-              <td class="headerValue" width="80%"><a href="index.html">/var/www/redsuns/cake-base</a>/<a href="lib.html">lib</a>/<a href="lib_Cake.html">Cake</a> (<a href="lib_Cake.dashboard.html">dashboard</a>)</td>
-            </tr>
-            <tr>
-              <td class="legendItem" width="20%">Legend:</td>
-              <td class="legendValue" width="80%">
-                <span class="coverLegendLo">
-                  <b>Low:</b> 0% to 35%
-                </span>
-                <span class="coverLegendMed">
-                  <b>Medium:</b> 35% to 70%
-                </span>
-                <span class="coverLegendHi">
-                  <b>High:</b> 70% to 100%
-                </span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td>
-      </tr>
-    </table>
+     <tr>
+      <td class="warning"><i class="icon-folder-open"></i> <a href="lib_Cake_Cache.html">Cache</a></td>
+      <td class="warning big">       <div class="progress progress-warning" style="width: 100px;">
+        <div class="bar" style="width: 47.56%;"></div>
+       </div>
+</td>
+      <td class="warning small"><div align="right">47.56%</div></td>
+      <td class="warning small"><div align="right">156&nbsp;/&nbsp;328</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 3.03%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">3.03%</div></td>
+      <td class="danger small"><div align="right">1&nbsp;/&nbsp;33</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;3</div></td>
+     </tr>
 
-    <br />
+     <tr>
+      <td class="success"><i class="icon-folder-open"></i> <a href="lib_Cake_Config.html">Config</a></td>
+      <td class="success big">       <div class="progress progress-success" style="width: 100px;">
+        <div class="bar" style="width: 97.06%;"></div>
+       </div>
+</td>
+      <td class="success small"><div align="right">97.06%</div></td>
+      <td class="success small"><div align="right">33&nbsp;/&nbsp;34</div></td>
+      <td class="None big">&nbsp;</td>
+      <td class="None small"><div align="right"></div></td>
+      <td class="None small"><div align="right">&nbsp;</div></td>
+      <td class="None big">&nbsp;</td>
+      <td class="None small"><div align="right"></div></td>
+      <td class="None small"><div align="right">&nbsp;</div></td>
+     </tr>
 
-    <center>
-      <table width="90%" cellpadding="2" cellspacing="1" border="0">
-        <tr>
-          <td class="tableHead" width="30%">&nbsp;</td>
-          <td class="tableHead" colspan="9">Coverage</td>
-        </tr>
-        <tr>
-          <td class="tableHead">&nbsp;</td>
-          <td class="tableHead" colspan="3">Lines</td>
-          <td class="tableHead" colspan="3">Functions / Methods</td>
-          <td class="tableHead" colspan="3">Classes</td>
-        </tr>
-        <tr>
-          <td class="coverDirectory">Total</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="25.24%">
-              <div class="size scarlet_red"  style="width:25.244773749669%" title="25.24%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">25.24%</td>
-          <td class="coverNumLo">3816 / 15116</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="11.26%">
-                <div class="size scarlet_red"  style="width:11.263972484953%" title="11.26%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">11.26%</td>
-          <td class="coverNumLo">131 / 1163</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="22.76%">
-                 <div class="size scarlet_red"  style="width:22.764227642276%" title="22.76%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">22.76%</td>
-          <td class="coverNumLo">28 / 123</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Console.html">Console</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;1086</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;116</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;11</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Cache.html">Cache</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="47.56%">
-              <div class="size butter"  style="width:47.560975609756%" title="47.56%"></div>
-            </div>
-          </td>
-          <td class="coverPerMed">47.56%</td>
-          <td class="coverNumMed">156 / 328</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="3.03%">
-                <div class="size scarlet_red"  style="width:3.030303030303%" title="3.03%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">3.03%</td>
-          <td class="coverNumLo">1 / 33</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 3</td>
-        </tr>
+     <tr>
+      <td class="warning"><i class="icon-folder-open"></i> <a href="lib_Cake_Controller.html">Controller</a></td>
+      <td class="warning big">       <div class="progress progress-warning" style="width: 100px;">
+        <div class="bar" style="width: 49.06%;"></div>
+       </div>
+</td>
+      <td class="warning small"><div align="right">49.06%</div></td>
+      <td class="warning small"><div align="right">494&nbsp;/&nbsp;1007</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 25.83%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">25.83%</div></td>
+      <td class="danger small"><div align="right">31&nbsp;/&nbsp;120</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;11</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Config.html">Config</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="97.06%">
-              <div class="size chameleon"  style="width:97.058823529412%" title="97.06%"></div>
-            </div>
-          </td>
-          <td class="coverPerHi">97.06%</td>
-          <td class="coverNumHi">33 / 34</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="100.00%">
-                <div class="size snow"  style="width:100%" title="100.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="100.00%">
-                 <div class="size snow"  style="width:100%" title="100.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Core.html">Core</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 26.18%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">26.18%</div></td>
+      <td class="danger small"><div align="right">167&nbsp;/&nbsp;638</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 17.31%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">17.31%</div></td>
+      <td class="danger small"><div align="right">9&nbsp;/&nbsp;52</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;4</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Console.html">Console</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-              <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 1086</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 116</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 11</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Error.html">Error</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 1.74%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">1.74%</div></td>
+      <td class="danger small"><div align="right">3&nbsp;/&nbsp;172</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;20</div></td>
+      <td class="warning big">       <div class="progress progress-warning" style="width: 100px;">
+        <div class="bar" style="width: 63.41%;"></div>
+       </div>
+</td>
+      <td class="warning small"><div align="right">63.41%</div></td>
+      <td class="warning small"><div align="right">26&nbsp;/&nbsp;41</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Controller.html">Controller</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="49.36%">
-              <div class="size butter"  style="width:49.35960591133%" title="49.36%"></div>
-            </div>
-          </td>
-          <td class="coverPerMed">49.36%</td>
-          <td class="coverNumMed">501 / 1015</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="25.83%">
-                <div class="size scarlet_red"  style="width:25.833333333333%" title="25.83%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">25.83%</td>
-          <td class="coverNumLo">31 / 120</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 11</td>
-        </tr>
+     <tr>
+      <td class="warning"><i class="icon-folder-open"></i> <a href="lib_Cake_Event.html">Event</a></td>
+      <td class="warning big">       <div class="progress progress-warning" style="width: 100px;">
+        <div class="bar" style="width: 59.84%;"></div>
+       </div>
+</td>
+      <td class="warning small"><div align="right">59.84%</div></td>
+      <td class="warning small"><div align="right">73&nbsp;/&nbsp;122</div></td>
+      <td class="warning big">       <div class="progress progress-warning" style="width: 100px;">
+        <div class="bar" style="width: 42.86%;"></div>
+       </div>
+</td>
+      <td class="warning small"><div align="right">42.86%</div></td>
+      <td class="warning small"><div align="right">6&nbsp;/&nbsp;14</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Core.html">Core</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="26.18%">
-              <div class="size scarlet_red"  style="width:26.175548589342%" title="26.18%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">26.18%</td>
-          <td class="coverNumLo">167 / 638</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="17.31%">
-                <div class="size scarlet_red"  style="width:17.307692307692%" title="17.31%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">17.31%</td>
-          <td class="coverNumLo">9 / 52</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 4</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_I18n.html">I18n</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 22.14%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">22.14%</div></td>
+      <td class="danger small"><div align="right">95&nbsp;/&nbsp;429</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;18</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Error.html">Error</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-              <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 172</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 20</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="63.41%">
-                 <div class="size butter"  style="width:63.414634146341%" title="63.41%"></div>
-              </div>
-          </td>
-          <td class="coverPerMed">63.41%</td>
-          <td class="coverNumMed">26 / 41</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Log.html">Log</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 11.58%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">11.58%</div></td>
+      <td class="danger small"><div align="right">22&nbsp;/&nbsp;190</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;28</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;5</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Event.html">Event</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="59.84%">
-              <div class="size butter"  style="width:59.83606557377%" title="59.84%"></div>
-            </div>
-          </td>
-          <td class="coverPerMed">59.84%</td>
-          <td class="coverNumMed">73 / 122</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="42.86%">
-                <div class="size butter"  style="width:42.857142857143%" title="42.86%"></div>
-            </div>
-          </td>
-          <td class="coverPerMed">42.86%</td>
-          <td class="coverNumMed">6 / 14</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 2</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Model.html">Model</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 31.02%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">31.02%</div></td>
+      <td class="danger small"><div align="right">1770&nbsp;/&nbsp;5706</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 13.67%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">13.67%</div></td>
+      <td class="danger small"><div align="right">51&nbsp;/&nbsp;373</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 11.76%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">11.76%</div></td>
+      <td class="danger small"><div align="right">2&nbsp;/&nbsp;17</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_I18n.html">I18n</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="22.14%">
-              <div class="size scarlet_red"  style="width:22.144522144522%" title="22.14%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">22.14%</td>
-          <td class="coverNumLo">95 / 429</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 18</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 2</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Network.html">Network</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 16.76%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">16.76%</div></td>
+      <td class="danger small"><div align="right">119&nbsp;/&nbsp;710</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 5.19%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">5.19%</div></td>
+      <td class="danger small"><div align="right">4&nbsp;/&nbsp;77</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Log.html">Log</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="11.58%">
-              <div class="size scarlet_red"  style="width:11.578947368421%" title="11.58%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">11.58%</td>
-          <td class="coverNumLo">22 / 190</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 28</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 5</td>
-        </tr>
+     <tr>
+      <td class="warning"><i class="icon-folder-open"></i> <a href="lib_Cake_Routing.html">Routing</a></td>
+      <td class="warning big">       <div class="progress progress-warning" style="width: 100px;">
+        <div class="bar" style="width: 41.85%;"></div>
+       </div>
+</td>
+      <td class="warning small"><div align="right">41.85%</div></td>
+      <td class="warning small"><div align="right">390&nbsp;/&nbsp;932</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 19.35%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">19.35%</div></td>
+      <td class="danger small"><div align="right">12&nbsp;/&nbsp;62</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;7</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Model.html">Model</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="31.04%">
-              <div class="size scarlet_red"  style="width:31.04414856342%" title="31.04%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">31.04%</td>
-          <td class="coverNumLo">1772 / 5708</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="13.67%">
-                <div class="size scarlet_red"  style="width:13.672922252011%" title="13.67%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">13.67%</td>
-          <td class="coverNumLo">51 / 373</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="11.76%">
-                 <div class="size scarlet_red"  style="width:11.764705882353%" title="11.76%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">11.76%</td>
-          <td class="coverNumLo">2 / 17</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_TestSuite.html">TestSuite</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;539</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;42</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;7</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Network.html">Network</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="16.76%">
-              <div class="size scarlet_red"  style="width:16.760563380282%" title="16.76%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">16.76%</td>
-          <td class="coverNumLo">119 / 710</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="5.19%">
-                <div class="size scarlet_red"  style="width:5.1948051948052%" title="5.19%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">5.19%</td>
-          <td class="coverNumLo">4 / 77</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 2</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_Utility.html">Utility</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 18.25%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">18.25%</div></td>
+      <td class="danger small"><div align="right">448&nbsp;/&nbsp;2455</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 9.94%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">9.94%</div></td>
+      <td class="danger small"><div align="right">17&nbsp;/&nbsp;171</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;9</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Routing.html">Routing</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="41.91%">
-              <div class="size butter"  style="width:41.907824222937%" title="41.91%"></div>
-            </div>
-          </td>
-          <td class="coverPerMed">41.91%</td>
-          <td class="coverNumMed">391 / 933</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="19.35%">
-                <div class="size scarlet_red"  style="width:19.354838709677%" title="19.35%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">19.35%</td>
-          <td class="coverNumLo">12 / 62</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 7</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-folder-open"></i> <a href="lib_Cake_View.html">View</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.51%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.51%</div></td>
+      <td class="danger small"><div align="right">2&nbsp;/&nbsp;396</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;37</div></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_TestSuite.html">TestSuite</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-              <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 539</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 42</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 7</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-file"></i> <a href="lib_Cake_basics.php.html">basics.php</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 10.66%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">10.66%</div></td>
+      <td class="danger small"><div align="right">37&nbsp;/&nbsp;347</div></td>
+      <td class="None big">&nbsp;</td>
+      <td class="None small"><div align="right"></div></td>
+      <td class="None small"><div align="right">&nbsp;</div></td>
+      <td class="None big">&nbsp;</td>
+      <td class="None small"><div align="right"></div></td>
+      <td class="None small"><div align="right">&nbsp;</div></td>
+     </tr>
 
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_Utility.html">Utility</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="18.25%">
-              <div class="size scarlet_red"  style="width:18.248472505092%" title="18.25%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">18.25%</td>
-          <td class="coverNumLo">448 / 2455</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="9.94%">
-                <div class="size scarlet_red"  style="width:9.9415204678363%" title="9.94%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">9.94%</td>
-          <td class="coverNumLo">17 / 171</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 9</td>
-        </tr>
-
-        <tr>
-          <td class="coverDirectory"><img alt="directory" src="directory.png"/> <a href="lib_Cake_View.html">View</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.51%">
-              <div class="size scarlet_red"  style="width:0.50505050505051%" title="0.51%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.51%</td>
-          <td class="coverNumLo">2 / 396</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-                <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 37</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="0.00%">
-                 <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 2</td>
-        </tr>
-
-        <tr>
-          <td class="coverFile"><img alt="file" src="file.png"/> <a href="lib_Cake_basics.php.html">basics.php</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="10.66%">
-              <div class="size scarlet_red"  style="width:10.662824207493%" title="10.66%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">10.66%</td>
-          <td class="coverNumLo">37 / 347</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="100.00%">
-                <div class="size snow"  style="width:100%" title="100.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="100.00%">
-                 <div class="size snow"  style="width:100%" title="100.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-        </tr>
-
-        <tr>
-          <td class="coverFile"><img alt="file" src="file.png"/> <a href="lib_Cake_bootstrap.php.html">bootstrap.php</a></td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="0.00%">
-              <div class="size scarlet_red"  style="width:0%" title="0.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerLo">0.00%</td>
-          <td class="coverNumLo">0 / 14</td>
-          <td class="coverBar">
-            <div class="coverBarOutline" title="100.00%">
-                <div class="size snow"  style="width:100%" title="100.00%"></div>
-            </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-          <td class="coverBar">
-              <div class="coverBarOutline" title="100.00%">
-                 <div class="size snow"  style="width:100%" title="100.00%"></div>
-              </div>
-          </td>
-          <td class="coverPerNone">100.00%</td>
-          <td class="coverNumNone">&nbsp;</td>
-        </tr>
+     <tr>
+      <td class="danger"><i class="icon-file"></i> <a href="lib_Cake_bootstrap.php.html">bootstrap.php</a></td>
+      <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
+        <div class="bar" style="width: 0.00%;"></div>
+       </div>
+</td>
+      <td class="danger small"><div align="right">0.00%</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;14</div></td>
+      <td class="None big">&nbsp;</td>
+      <td class="None small"><div align="right"></div></td>
+      <td class="None small"><div align="right">&nbsp;</div></td>
+      <td class="None big">&nbsp;</td>
+      <td class="None small"><div align="right"></div></td>
+      <td class="None small"><div align="right">&nbsp;</div></td>
+     </tr>
 
 
-      </table>
-    </center>
-
-    <br />
-
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.4-14</a> and PHPUnit 3.6.10 at Sat Jun 15 15:20:40 BRT 2013.</td></tr>
-    </table>
-
-    <br/>
-  </body>
+    </tbody>
+   </table>
+   <footer>
+    <h4>Legend</h4>
+    <p>
+     <span class="danger"><strong>Low</strong>: 0% to 35%</span>
+     <span class="warning"><strong>Medium</strong>: 35% to 70%</span>
+     <span class="success"><strong>High</strong>: 70% to 100%</span>
+    </p>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.12</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.4-14+deb7u2</a> and <a href="http://phpunit.de/">PHPUnit 3.7.22</a> at Sun Jul 7 11:07:43 BRT 2013.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+ </body>
 </html>
