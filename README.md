@@ -2,8 +2,14 @@
 
 Base de features comuns em diversos projetos
 
+###Clonando
+` $ git clone git@github.com:redsuns/cake-base `
 
-###Instalação
+
+##Selecione o branch desejado e siga o README correspondente
+
+
+###Instalação a partir do branch master
 
 * Crie um projeto baseado no CakePHP com a versão mais recente
 * atualize este repositório em seu localhost `git pull`
