@@ -29,6 +29,14 @@ e rode o cake schema ` ./cake schema create ` para que seu banco de dados seja i
 seu gerenciador de banco de dados.
 
 
-
 Para mais opções execute o init.php sem parâmetro que um menu de ajuda será exibido.
 
+
+###Features já disponíveis
+
+* Login utilizando AuthComponent;
+* Algoritmo Blowfish para hash de senha;
+* Estrutura básica para CRUD de usuários e tipos de usuários;
+* Testes unitários com coverage para CRUD de usuários e tipos de usuários;
+* Prefixo para 'admin' já definido;
+* Modelo inicial do banco de dados bem como Schema dos parâmetros iniciais;
