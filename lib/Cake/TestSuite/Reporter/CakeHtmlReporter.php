@@ -97,7 +97,7 @@ class CakeHtmlReporter extends CakeBaseReporter {
 			$urlExtra = '&plugin=' . $plugin;
 		}
 
-		if (1 > count($testCases)) {
+		if (count($testCases) < 1) {
 			$buffer .= "<strong>EMPTY</strong>";
 		}
 
@@ -372,7 +372,8 @@ class CakeHtmlReporter extends CakeBaseReporter {
 /**
  * A test suite started.
  *
- * @param  PHPUnit_Framework_TestSuite $suite
+ * @param PHPUnit_Framework_TestSuite $suite
+ * @return void
  */
 	public function startTestSuite(PHPUnit_Framework_TestSuite $suite) {
 		if (!$this->_headerSent) {

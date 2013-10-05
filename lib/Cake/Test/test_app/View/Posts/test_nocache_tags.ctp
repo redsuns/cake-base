@@ -61,13 +61,13 @@
 <?php
 if (!empty($filePresent)):
 	App::uses('ConnectionManager', 'Model');
- 	$connected = ConnectionManager::getDataSource('default');
+	$connected = ConnectionManager::getDataSource('default');
 ?>
 <p>
 	<span class="notice">
 		<?php echo __d('cake', 'Cake');
 			if ($connected->isConnected()):
-		 		__d('cake', ' is able to ');
+				__d('cake', ' is able to ');
 			else:
 				__d('cake', ' is NOT able to ');
 			endif;

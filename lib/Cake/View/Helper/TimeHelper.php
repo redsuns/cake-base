@@ -75,10 +75,9 @@ class TimeHelper extends AppHelper {
 		switch ($name) {
 			case 'niceFormat':
 				$this->_engine->{$name} = $value;
-			break;
+				break;
 			default:
 				$this->{$name} = $value;
-			break;
 		}
 	}
 
@@ -362,7 +361,7 @@ class TimeHelper extends AppHelper {
 	public function timeAgoInWords($dateTime, $options = array()) {
 		$element = null;
 
-		if (is_array($options) && !empty($options['element'])) {
+		if (!empty($options['element'])) {
 			$element = array(
 				'tag' => 'span',
 				'class' => 'time-ago-in-words',

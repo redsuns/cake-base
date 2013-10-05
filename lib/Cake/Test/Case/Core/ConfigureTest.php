@@ -70,6 +70,23 @@ class ConfigureTest extends CakeTestCase {
 	}
 
 /**
+ * Test to ensure bootrapping doesn't overwrite prior configs set under 'App' key
+ * @return void
+ */
+	public function testBootstrap() {
+		$expected = array(
+			'foo' => 'bar'
+		);
+		Configure::write('App', $expected);
+
+		Configure::bootstrap(true);
+		$result = Configure::read('App');
+
+		$this->assertEquals($expected['foo'], $result['foo']);
+		$this->assertFalse($result['base']);
+	}
+
+/**
  * testRead method
  *
  * @return void
@@ -447,7 +464,7 @@ class ConfigureTest extends CakeTestCase {
 /**
  * Test dumping only some of the data.
  *
- * @return
+ * @return void
  */
 	public function testDumpPartial() {
 		Configure::config('test_reader', new PhpReader(TMP));

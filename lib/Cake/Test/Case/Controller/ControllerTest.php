@@ -50,7 +50,6 @@ class ControllerTestAppController extends Controller {
 	public $components = array('Cookie');
 }
 
-
 /**
  * ControllerPost class
  *
@@ -1080,6 +1079,7 @@ class ControllerTest extends CakeTestCase {
  * @return void
  */
 	public function testValidateErrorsOnArbitraryModels() {
+		Configure::write('Config.language', 'eng');
 		$TestController = new TestController();
 
 		$Post = new ControllerPost();

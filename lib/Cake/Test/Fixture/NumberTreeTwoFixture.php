@@ -30,23 +30,16 @@
 class NumberTreeTwoFixture extends CakeTestFixture {
 
 /**
- * name property
- *
- * @var string 'NumberTree'
- */
-	public $name = 'NumberTreeTwo';
-
-/**
  * fields property
  *
  * @var array
  */
 	public $fields = array(
-		'id'	=> array('type' => 'integer','key' => 'primary'),
-		'name'	=> array('type' => 'string','null' => false),
+		'id'	=> array('type' => 'integer', 'key' => 'primary'),
+		'name'	=> array('type' => 'string', 'null' => false),
 		'number_tree_id' => array('type' => 'integer', 'null' => false),
 		'parent_id' => 'integer',
-		'lft'	=> array('type' => 'integer','null' => false),
-		'rght'	=> array('type' => 'integer','null' => false)
+		'lft'	=> array('type' => 'integer', 'null' => false),
+		'rght'	=> array('type' => 'integer', 'null' => false)
 	);
 }

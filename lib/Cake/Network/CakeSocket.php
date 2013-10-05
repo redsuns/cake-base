@@ -184,8 +184,9 @@ class CakeSocket {
  *
  * Instead we need to handle those errors manually.
  *
- * @param int $code
+ * @param integer $code
  * @param string $message
+ * @return void
  */
 	protected function _connectionErrorHandler($code, $message) {
 		$this->_connectionErrors[] = $message;
@@ -382,11 +383,10 @@ class CakeSocket {
 		if ($enableCryptoResult === true) {
 			$this->encrypted = $enable;
 			return true;
-		} else {
-			$errorMessage = __d('cake_dev', 'Unable to perform enableCrypto operation on CakeSocket');
-			$this->setLastError(null, $errorMessage);
-			throw new SocketException($errorMessage);
 		}
+		$errorMessage = __d('cake_dev', 'Unable to perform enableCrypto operation on CakeSocket');
+		$this->setLastError(null, $errorMessage);
+		throw new SocketException($errorMessage);
 	}
 
 }

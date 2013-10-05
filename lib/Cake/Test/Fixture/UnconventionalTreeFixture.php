@@ -29,22 +29,15 @@
 class UnconventionalTreeFixture extends CakeTestFixture {
 
 /**
- * name property
- *
- * @var string 'FlagTree'
- */
-	public $name = 'UnconventionalTree';
-
-/**
  * fields property
  *
  * @var array
  */
 	public $fields = array(
-		'id'	=> array('type' => 'integer','key' => 'primary'),
-		'name'	=> array('type' => 'string','null' => false),
+		'id'	=> array('type' => 'integer', 'key' => 'primary'),
+		'name'	=> array('type' => 'string', 'null' => false),
 		'join' => 'integer',
-		'left'	=> array('type' => 'integer','null' => false),
-		'right'	=> array('type' => 'integer','null' => false),
+		'left'	=> array('type' => 'integer', 'null' => false),
+		'right'	=> array('type' => 'integer', 'null' => false),
 	);
 }

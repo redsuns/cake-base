@@ -30,6 +30,7 @@ class AssetDispatcherTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
+		parent::tearDown();
 		Configure::write('Dispatcher.filters', array());
 	}
 
@@ -139,6 +140,50 @@ class AssetDispatcherTest extends CakeTestCase {
 		$request = new CakeRequest('//index.php');
 		$event = new CakeEvent('Dispatcher.beforeRequest', $this, compact('request', 'response'));
 
+		$this->assertNull($filter->beforeDispatch($event));
+		$this->assertFalse($event->isStopped());
+	}
+
+/**
+ * Test that attempts to traverse directories are prevented.
+ *
+ * @return void
+ */
+	public function test404OnDoubleDot() {
+		App::build(array(
+			'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS),
+			'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
+		), APP::RESET);
+
+		$response = $this->getMock('CakeResponse', array('_sendHeader'));
+		$request = new CakeRequest('theme/test_theme/../../../../../../VERSION.txt');
+		$event = new CakeEvent('Dispatcher.beforeRequest', $this, compact('request', 'response'));
+
+		$response->expects($this->never())->method('send');
+
+		$filter = new AssetDispatcher();
+		$this->assertNull($filter->beforeDispatch($event));
+		$this->assertFalse($event->isStopped());
+	}
+
+/**
+ * Test that attempts to traverse directories with urlencoded paths fail.
+ *
+ * @return void
+ */
+	public function test404OnDoubleDotEncoded() {
+		App::build(array(
+			'Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS),
+			'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
+		), APP::RESET);
+
+		$response = $this->getMock('CakeResponse', array('_sendHeader', 'send'));
+		$request = new CakeRequest('theme/test_theme/%2e./%2e./%2e./%2e./%2e./%2e./VERSION.txt');
+		$event = new CakeEvent('Dispatcher.beforeRequest', $this, compact('request', 'response'));
+
+		$response->expects($this->never())->method('send');
+
+		$filter = new AssetDispatcher();
 		$this->assertNull($filter->beforeDispatch($event));
 		$this->assertFalse($event->isStopped());
 	}

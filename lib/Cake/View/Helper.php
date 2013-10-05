@@ -223,7 +223,7 @@ class Helper extends Object {
  *
  * @param string $name Name of the property being accessed.
  * @param mixed $value
- * @return mixed Return the $value
+ * @return void
  */
 	public function __set($name, $value) {
 		switch ($name) {
@@ -231,11 +231,13 @@ class Helper extends Object {
 			case 'here':
 			case 'webroot':
 			case 'data':
-				return $this->request->{$name} = $value;
+				$this->request->{$name} = $value;
+				return;
 			case 'action':
-				return $this->request->params['action'] = $value;
+				$this->request->params['action'] = $value;
+				return;
 		}
-		return $this->{$name} = $value;
+		$this->{$name} = $value;
 	}
 
 /**
@@ -247,7 +249,7 @@ class Helper extends Object {
  *    an array of url parameters. Using an array for URLs will allow you to leverage
  *    the reverse routing features of CakePHP.
  * @param boolean $full If true, the full base URL will be prepended to the result
- * @return string  Full translated URL with base path.
+ * @return string Full translated URL with base path.
  * @link http://book.cakephp.org/2.0/en/views/helpers.html
  */
 	public function url($url = null, $full = false) {
@@ -322,13 +324,16 @@ class Helper extends Object {
 		) {
 			$path .= $options['ext'];
 		}
+		if (preg_match('|^([a-z0-9]+:)?//|', $path)) {
+			return $path;
+		}
 		if (isset($plugin)) {
 			$path = Inflector::underscore($plugin) . '/' . $path;
 		}
 		$path = $this->_encodeUrl($this->assetTimestamp($this->webroot($path)));
 
 		if (!empty($options['fullBase'])) {
-			$path = rtrim(FULL_BASE_URL, '/') . '/' . ltrim($path, '/');
+			$path = rtrim(Router::fullBaseUrl(), '/') . '/' . ltrim($path, '/');
 		}
 		return $path;
 	}
@@ -341,7 +346,7 @@ class Helper extends Object {
  */
 	protected function _encodeUrl($url) {
 		$path = parse_url($url, PHP_URL_PATH);
-		$parts = array_map('urldecode', explode('/', $path));
+		$parts = array_map('rawurldecode', explode('/', $path));
 		$parts = array_map('rawurlencode', $parts);
 		$encoded = implode('/', $parts);
 		return h(str_replace($path, $encoded, $url));
@@ -478,7 +483,7 @@ class Helper extends Object {
  */
 	protected function _formatAttribute($key, $value, $escape = true) {
 		if (is_array($value)) {
-			$value = implode(' ' , $value);
+			$value = implode(' ', $value);
 		}
 		if (is_numeric($key)) {
 			return sprintf($this->_minimizedAttributeFormat, $value, $value);
@@ -492,6 +497,24 @@ class Helper extends Object {
 			return '';
 		}
 		return sprintf($this->_attributeFormat, $key, ($escape ? h($value) : $value));
+	}
+
+/**
+ * Returns a string to be used as onclick handler for confirm dialogs.
+ *
+ * @param string $message Message to be displayed
+ * @param string $okCode Code to be executed after user chose 'OK'
+ * @param string $cancelCode Code to be executed after user chose 'Cancel'
+ * @param array $options Array of options
+ * @return string onclick JS code
+ */
+	protected function _confirm($message, $okCode, $cancelCode = '', $options = array()) {
+		$message = json_encode($message);
+		$confirm = "if (confirm({$message})) { {$okCode} } {$cancelCode}";
+		if (isset($options['escape']) && $options['escape'] === false) {
+			$confirm = h($confirm);
+		}
+		return $confirm;
 	}
 
 /**
@@ -662,18 +685,16 @@ class Helper extends Object {
 		switch ($field) {
 			case '_method':
 				$name = $field;
-			break;
+				break;
 			default:
 				$name = 'data[' . implode('][', $this->entity()) . ']';
-			break;
 		}
 
 		if (is_array($options)) {
 			$options[$key] = $name;
 			return $options;
-		} else {
-			return $name;
 		}
+		return $name;
 	}
 
 /**
@@ -729,9 +750,8 @@ class Helper extends Object {
 		if (is_array($options)) {
 			$options[$key] = $result;
 			return $options;
-		} else {
-			return $result;
 		}
+		return $result;
 	}
 
 /**
@@ -837,7 +857,7 @@ class Helper extends Object {
  * @param string $viewFile The file about to be rendered.
  * @return void
  */
-	public function beforeRenderFile($viewfile) {
+	public function beforeRenderFile($viewFile) {
 	}
 
 /**
@@ -850,7 +870,7 @@ class Helper extends Object {
  * @param string $content The content that was rendered.
  * @return void
  */
-	public function afterRenderFile($viewfile, $content) {
+	public function afterRenderFile($viewFile, $content) {
 	}
 
 /**
@@ -920,7 +940,7 @@ class Helper extends Object {
 		do {
 			$oldstring = $this->_cleaned;
 			$this->_cleaned = preg_replace('#</*(applet|meta|xml|blink|link|style|script|embed|object|iframe|frame|frameset|ilayer|layer|bgsound|title|base)[^>]*>#i', "", $this->_cleaned);
-		} while ($oldstring != $this->_cleaned);
+		} while ($oldstring !== $this->_cleaned);
 		$this->_cleaned = str_replace(array("&amp;", "&lt;", "&gt;"), array("&amp;amp;", "&amp;lt;", "&amp;gt;"), $this->_cleaned);
 	}
 
