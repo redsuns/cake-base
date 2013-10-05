@@ -120,6 +120,10 @@ class InitBase {
         echo "\n-- Copiando Css ";
         exec("cp -fr app/webroot/css/* " . $this->caminhoCopiaArquivos . "/app/webroot/css/");
         echo "-- Ok\n";
+        
+        echo "\n-- Copiando Imagens ";
+        exec("cp -fr app/webroot/img/* " . $this->caminhoCopiaArquivos . "/app/webroot/img/");
+        echo "-- Ok\n";
 
         echo "\n-- Copiando Js ";
         exec("cp -fr app/webroot/js/* " . $this->caminhoCopiaArquivos . "/app/webroot/js/");
