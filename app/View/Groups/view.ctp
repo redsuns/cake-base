@@ -1,41 +1,57 @@
-<div class="groups view">
-<h2><?php  echo __('Group'); ?></h2>
+<div class="main">
+    <div class="container">
+
+        <div class="row">
+            <div class="span12">
+                <div class="breadcrumb">
+                    <?php echo $this->Html->link('Início', '/'); ?>
+                    <?php echo $this->Html->link('Grupos/Perfis', '/groups'); ?>
+                    Detalhes
+                </div>
+                <hr class="hr">
+            </div>
+        </div>
+        <br/>
+        <div class="span2">
+            <h3>Ações</h3>
+            <ul>
+                <li><?php echo $this->Html->link('Editar Grupo', array('action' => 'edit', $group['Group']['id'])); ?> </li>
+                <li><?php echo $this->Form->postLink('Deletar Grupo', array('action' => 'delete', $group['Group']['id']), null, __('Are you sure you want to delete # %s?', $group['Group']['id'])); ?> </li>
+                <li><?php echo $this->Html->link('Listar Grupos', array('action' => 'index')); ?> </li>
+                <li><?php echo $this->Html->link('Novo Grupo', array('action' => 'add')); ?> </li>
+                <li><?php echo $this->Html->link('Listar Usuários', array('controller' => 'users', 'action' => 'index')); ?> </li>
+                <li><?php echo $this->Html->link('Novo Usuário', array('controller' => 'users', 'action' => 'add')); ?> </li>
+
+            </ul>
+        </div>
+        <div class="span9">
+            <h2>Detalhes</h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($group['Group']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt>Nome</dt>
 		<dd>
 			<?php echo h($group['Group']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt>Criado em</dt>
 		<dd>
 			<?php echo h($group['Group']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt>Modificado em</dt>
 		<dd>
 			<?php echo h($group['Group']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Group'), array('action' => 'edit', $group['Group']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Group'), array('action' => 'delete', $group['Group']['id']), null, __('Are you sure you want to delete # %s?', $group['Group']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Groups'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Group'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+        </div>
+
 <div class="related">
-	<h3><?php echo __('Related Users'); ?></h3>
+	<h3>Usuários deste grupo</h3>
 	<?php if (!empty($group['User'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>

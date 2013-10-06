@@ -7,7 +7,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'masterkey',
-		'database' => 'base',
+		'database' => 'cake',
 		'prefix' => '',
 		'encoding' => 'utf8'
 	);

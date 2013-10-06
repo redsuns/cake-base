@@ -1,21 +1,36 @@
-<div class="groups form">
-<?php echo $this->Form->create('Group'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Group'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<div class="main">
+    <div class="container">
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Group.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Group.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Groups'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
+        <div class="row">
+            <div class="span12">
+                <div class="breadcrumb">
+                    <?php echo $this->Html->link('Início', '/'); ?>
+                    <?php echo $this->Html->link('Grupos/Perfis', '/groups'); ?>
+                    Editar
+                </div>
+                <hr class="hr">
+            </div>
+        </div>
+        <br/>
+        <div class="span2">
+            <h3>Ações</h3>
+            <ul>
+
+                    <li><?php echo $this->Html->link('Listar Grupos', array('action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link('Listar Usuários', array('controller' => 'users', 'action' => 'index')); ?> </li>
+                    <li><?php echo $this->Html->link('Novo usuário', array('controller' => 'users', 'action' => 'add')); ?> </li>
+            </ul>
+        </div>
+        <div class="span9">
+            <?php echo $this->Form->create('Group'); ?>
+            <fieldset>
+                <legend>Editando <?php echo $this->request->data['Group']['name']; ?></legend>
+                <?php
+                echo $this->Form->input('id');
+                echo $this->Form->input('name', array('label' => 'Nome'));
+                ?>
+            </fieldset>
+            <?php echo $this->Form->end(array('label' => 'Gravar alterações', 'value' => 'Gravar alterações', 'class' => 'btn btn-primary')); ?>
+        </div>
+    </div>
 </div>
