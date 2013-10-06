@@ -105,6 +105,10 @@ class InitBase {
      */
     private function __copiaArquivos() {
         
+        echo "\n-- Copiando Rotas ";
+        exec("cp -fr app/Config/routes.php " . $this->caminhoCopiaArquivos . "/app/Config/");
+        echo "-- Ok\n";
+        
         echo "\n-- Copiando Models ";
         exec("cp -fr app/Model " . $this->caminhoCopiaArquivos . "/app/");
         echo "-- Ok\n";
@@ -129,12 +133,15 @@ class InitBase {
         exec("cp -fr app/webroot/js/* " . $this->caminhoCopiaArquivos . "/app/webroot/js/");
         echo "-- Ok\n";
 
-        echo "\n-- Copiando Coverage ";
-        exec("cp -fr app/webroot/coverage " . $this->caminhoCopiaArquivos . "/app/webroot/");
-        echo " -- Ok\n";
-
         echo "\n-- Copiando Testes ";
         exec("cp -fr app/Test " . $this->caminhoCopiaArquivos . "/app/");
+        echo "-- Ok\n";
+        
+        
+        echo "\n-- Habilitando Admin Prefix ";
+        $core = fopen($this->caminhoCopiaArquivos . "/app/Config/core.php", 'a+');
+        fwrite($core, "\nConfigure::write('Routing.prefixes', array('admin'));");
+        fclose($core);
         echo "-- Ok\n";
 
 
