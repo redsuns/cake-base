@@ -1,34 +1,37 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('group_id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('surname');
-		echo $this->Form->input('email');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('address');
-		echo $this->Form->input('addr_number');
-		echo $this->Form->input('addr_complement');
-		echo $this->Form->input('addr_district');
-		echo $this->Form->input('addr_city');
-		echo $this->Form->input('addr_state');
-		echo $this->Form->input('addr_country');
-		echo $this->Form->input('addr_zip_code');
-		echo $this->Form->input('phone');
-		echo $this->Form->input('celphone');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<div class="maincontentinner">
+    <ul class="maintabmenu">
+        <li id="admin_index"><?php echo $this->Html->link('Lista', array('controller' => 'users', 'action' => 'index', 'admin' => true)); ?></li>
+        <li id="admin_add"><?php echo $this->Html->link('Adicionar', array('controller' => 'users', 'action' => 'add', 'admin' => true)); ?></li>
+    </ul><!--maintabmenu-->
+    <div class="maincontentinner">
+        <div class="content">
+            <div class="contenttitle radiusbottom0">
+                <h2 class="table"><span>Adicionar usuario</span></h2>
+            </div><!--contenttitle-->
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
-	</ul>
+            <?php echo $this->Form->create('User', array('class' => 'stdform')); ?>
+
+            <p><?php echo $this->Form->input('group_id'); ?></p>
+            <p><?php echo $this->Form->input('name'); ?></p>
+            <p><?php echo $this->Form->input('surname'); ?></p>
+            <p><?php echo $this->Form->input('email'); ?></p>
+            <p><?php echo $this->Form->input('username'); ?></p>
+            <p><?php echo $this->Form->input('password'); ?></p>
+            <p><?php echo $this->Form->input('address'); ?></p>
+            <p><?php echo $this->Form->input('addr_number'); ?></p>
+            <p><?php echo $this->Form->input('addr_complement'); ?></p>
+            <p><?php echo $this->Form->input('addr_district'); ?></p>
+            <p><?php echo $this->Form->input('addr_city'); ?></p>
+            <p><?php echo $this->Form->input('addr_state'); ?></p>
+            <p><?php echo $this->Form->input('addr_country'); ?></p>
+            <p><?php echo $this->Form->input('addr_zip_code', array('class' => 'cep')); ?></p>
+            <p><?php echo $this->Form->input('phone', array('class' => 'telefone')); ?></p>
+            <p><?php echo $this->Form->input('celphone', array('class' => 'telefone')); ?></p>
+
+            <?php echo $this->Form->end(array('value' => 'Finalizar', 'label' => 'Finalizar', 'div' => false)); ?>
+        </div>
+    </div>
 </div>
+
+<?php
+$this->Js->buffer('$(\'#' . $this->params['action'] . '\').addClass(\'current\');');

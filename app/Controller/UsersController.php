@@ -31,6 +31,76 @@ class UsersController extends AppController {
         $this->redirect($this->Auth->redirectUrl());
     }
     
+    /**
+     * 
+     */
+    public function admin_login() {
+        $this->layout = 'admin_login';
+        
+        if ( $this->request->is('post') ) {
+            if ( $this->Auth->login() ) {
+                $this->Session->setFlash('<p>Login realizado com sucesso!</p>', 'default', array('class' => 'notification msgsucces'));
+                $this->redirect('/admin/pages/index/home');
+            }
+            $this->Session->setFlash('<p>Dados de login inválidos, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
+        }
+    }
+    
+    
+    
+    /**
+     * 
+     */
+    public function admin_logout() {
+        $this->Auth->logout();
+        $this->redirect($this->Auth->redirectUrl());
+    }
+    
+    
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function admin_index()
+    {
+        $this->User->recursive = 0;
+        $this->paginate = array('order' => array('created' => 'desc'));
+        
+        $this->set('users', $this->paginate());
+    }
+    
+    
+    public function admin_add() {
+		if ($this->request->is('post')) {
+			$this->User->create();
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash('<p>Cadastro realizado com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('<p>Não foi possível realizar o cadastro, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
+			}
+		}
+		$groups = $this->User->Group->find('list');
+		$this->set(compact('groups'));
+	}
+        
+        
+        public function admin_delete($id = null) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->User->delete()) {
+			$this->Session->setFlash('<p>Perfil removido com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash('<p>Não foi possível remover o seu perfil, por favor tente novamente.</p>', 
+                        'default', array('class' => 'notification msgerror'));
+		$this->redirect(array('action' => 'index'));
+	}
+    
 /**
  * index method
  *

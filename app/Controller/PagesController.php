@@ -43,8 +43,36 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('Node');
 
+        
+        public function admin_index( $node = 'home' )
+        {
+            $this->set('title_for_layout', Inflector::humanize($node));
+            
+            if ( !empty($this->request->data) ) {
+                $this->Node->create();
+                if ( $this->Node->save($this->request->data) ) {
+                    $this->Session->setFlash('<p>Conteúdo atualizado com sucesso!</p>', 'default', 
+                            array('class' => 'notification msgsuccess'));
+                    $this->redirect(array('controller' => 'pages', 'action' => 'index', $node, 'admin' => true));
+                } else {
+                    $this->Session->setFlash('<p>Não foi possível gravar o conteudo, por favor tente novamente.</p>', 
+                            'default', array('class' => 'notification msgerror'));
+                }
+            }
+            
+            $page = $this->Node->find('first', array('conditions' => array('type' => 'page', 'location' => $node)));
+            if( $page ) {
+                $this->request->data = $page;
+            } else {
+                $this->request->data = array('Node' => 
+                    array('type' => 'page', 'location' => $node, 'content' => '',
+                        'keywords' => '', 'description' => ''));
+            }
+            
+        }
+        
 /**
  * Displays a view
  *

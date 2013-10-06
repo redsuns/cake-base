@@ -33,52 +33,67 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
-    public $components = array('Session', 'Auth', 'Acl', 'DebugKit.Toolbar');
+    public $components = array('Session', 'Auth' => array('authorize' => 'Controller'), 'DebugKit.Toolbar');
     
     
     public function beforeFilter() {
         
-        // Mecanismo de autenticação            
         $this->Auth->authenticate = array('Blowfish' => array(
-                // Configura o model e os campos
-                'userModel' => 'User',
-//                'fields' => array(
-//                    'username' => 'email',
-//                    'password' => 'senha',
-//                ),
+                'userModel' => 'User'
         ));
         
-        
-        
         $this->Auth->loginAction = array(
-            'controller' => 'user',
+            'controller' => 'users',
             'action' => 'login'
         );
-
         
+        $this->Auth->deny();
+        $whiteList = array();
+        
+
+//        if ( $this->Auth->user() ) {
+//            $this->Auth->allow();
+//        } else {
+//            $this->Auth->allow($whiteList);
+//        }
         $this->Auth->allow();
-
-        $blackList = array();
-
-        //$this->Auth->deny($blackList);
         
+        $this->Auth->authError = 'Suas permissões não concedem acesso ao recurso solicitado.';
         
-         // Iremos autorizar controllers e actions 
-        $this->Auth->authorize = array(
-            'Actions' => array('actionPath' => 'controllers')
-        );
-
-        //definindo a mensagem
-        $this->Auth->authError = __('<div class="notification msgerror">
-                                        <div class="alert alert-error">
-                                            <p>
-                                                Você precisa realizar o login 
-                                                para acessar a área solicitada.
-                                            </p>
-                                        </div>
-                                    </div>');
+        if ( $this->Auth->user() && !$this->isAuthorized() ) {
+            $this->Session->setFlash($this->Auth->authError, 'default', array('class' => 'alert alert-error'));
+            $this->redirect('/');
+        }
+        
+        if ( $this->params['prefix'] == 'admin' ) {
+            $this->layout = 'admin';
+        }
+        
+        $this->set('keywords', '');
+        $this->set('description', '');
         
         parent::beforeFilter();
+    }
+    
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function isAuthorized() 
+    {
+        // Any registered user can access public functions
+        if (empty($this->request->params['admin'])) {
+            return true;
+        }
+
+        // Only admins can access admin functions
+        if (isset($this->request->params['admin'])) {
+            return (bool)($this->Auth->user('group_id') === '1');
+        }
+
+        // Default deny
+        return false;
     }
     
 }

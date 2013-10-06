@@ -7,6 +7,40 @@ App::uses('AppController', 'Controller');
  */
 class GroupsController extends AppController {
 
+    
+    public function admin_index() {
+            $this->Group->recursive = 0;
+            $this->set('groups', $this->paginate());
+    }
+    
+    
+    public function admin_add() {
+		if ($this->request->is('post')) {
+			$this->Group->create();
+			if ($this->Group->save($this->request->data)) {
+				$this->Session->setFlash('<p>Perfil adicionado</p>', 'default', array('class' => 'notification msgsuccess'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('<p>Não foi possível adicionar o perfil, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
+			}
+		}
+	}
+        
+        
+        public function admin_delete($id = null) {
+		$this->Group->id = $id;
+		if (!$this->Group->exists()) {
+			throw new NotFoundException(__('Invalid group'));
+		}
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Group->delete()) {
+			$this->Session->setFlash('<p>Perfil removido com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash('<p>Não foi possível remover o perfil</p>', 'default', array('class' => 'notification msgerror'));
+		$this->redirect(array('action' => 'index'));
+	}
+    
 /**
  * index method
  *

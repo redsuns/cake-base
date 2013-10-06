@@ -4,44 +4,63 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 
 -- -----------------------------------------------------
--- Table `base`.`groups`
+-- Table `groups`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `groups` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(60) NOT NULL ,
-  `created` DATETIME NULL ,
-  `modified` DATETIME NULL ,
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(60) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
-ENGINE = InnoDB
+ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
 
 
 -- -----------------------------------------------------
--- Table `base`.`users`
+-- Table `nodes`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `nodes` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `type` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `location` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `main` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
+  `description` VARCHAR(150) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
+  `keywords` VARCHAR(500) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = MyISAM
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `users`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `users` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `group_id` INT UNSIGNED NOT NULL ,
-  `name` VARCHAR(100) NOT NULL ,
-  `surname` VARCHAR(100) NOT NULL ,
-  `email` VARCHAR(255) NOT NULL ,
-  `username` VARCHAR(255) NOT NULL ,
-  `password` VARCHAR(60) NOT NULL ,
-  `address` VARCHAR(255) NOT NULL ,
-  `addr_number` INT NOT NULL ,
-  `addr_complement` VARCHAR(50) NULL ,
-  `addr_district` VARCHAR(100) NOT NULL ,
-  `addr_city` VARCHAR(100) NOT NULL ,
-  `addr_state` VARCHAR(2) NOT NULL DEFAULT 'PR' ,
-  `addr_country` VARCHAR(45) NOT NULL ,
-  `addr_zip_code` VARCHAR(10) NOT NULL ,
-  `phone` VARCHAR(14) NOT NULL ,
-  `celphone` VARCHAR(15) NULL ,
-  `created` DATETIME NULL ,
-  `modified` DATETIME NULL ,
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `group_id` INT(10) NOT NULL ,
+  `name` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `surname` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `email` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `username` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `password` VARCHAR(60) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `address` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `addr_number` INT(11) NOT NULL ,
+  `addr_complement` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
+  `addr_district` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `addr_city` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `addr_state` VARCHAR(2) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL DEFAULT 'PR' ,
+  `addr_country` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `addr_zip_code` VARCHAR(10) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `phone` VARCHAR(14) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `celphone` VARCHAR(15) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
-ENGINE = InnoDB
+ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
 
