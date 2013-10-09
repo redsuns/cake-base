@@ -94,6 +94,8 @@ class InitBase {
         
         $this->__copiaArquivos();
         $this->__habilitaPlugins();
+        $this->__habilitarAdminPrefix();
+        $this->__aplicarTraducao();
         $this->__aplicarPermissoes();
         
         echo "\nPROCESSO FINALIZADO!\n\n";
@@ -138,13 +140,6 @@ class InitBase {
         echo "-- Ok\n";
         
         
-        echo "\n-- Habilitando Admin Prefix ";
-        $core = fopen($this->caminhoCopiaArquivos . "/app/Config/core.php", 'a+');
-        fwrite($core, "\nConfigure::write('Routing.prefixes', array('admin'));");
-        fclose($core);
-        echo "-- Ok\n";
-
-
         echo "\n-- Copiando Schema e database model ";
         exec("cp -fr app/Config/Schema/base.mwb " . $this->caminhoCopiaArquivos . "/app/Config/Schema/");
         exec("cp -fr app/Config/Schema/schema.php " . $this->caminhoCopiaArquivos . "/app/Config/Schema/");
@@ -166,6 +161,35 @@ class InitBase {
         $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", "a");
         fwrite($bootstrap, "\nCakePlugin::loadAll();\n");
         fclose($bootstrap);
+        echo "-- Ok\n";
+    }
+    
+    /**
+     * 
+     */
+    private function __aplicarTraducao()
+    {
+        echo "\n-- Copiando arquivos de tradução ";
+        exec("cp -fr app/Locale/pt_BR " . $this->caminhoCopiaArquivos . "/app/Locale/");
+        echo "-- Ok\n";
+        
+        echo "\n-- Habilitando tradução para Português BR";
+        $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", 'a+');
+        fwrite($bootstrap, "\n\nConfigure::write('Config.language', 'pt_BR');");
+        fclose($bootstrap);
+        echo "-- Ok\n";
+    }
+    
+    
+    /**
+     * 
+     */
+    private function __habilitarAdminPrefix()
+    {
+        echo "\n-- Habilitando Admin Prefix ";
+        $core = fopen($this->caminhoCopiaArquivos . "/app/Config/core.php", 'a+');
+        fwrite($core, "\nConfigure::write('Routing.prefixes', array('admin'));");
+        fclose($core);
         echo "-- Ok\n";
     }
     
