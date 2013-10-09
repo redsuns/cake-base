@@ -14,10 +14,10 @@ class UsersController extends AppController {
     public function login() {
         if ( $this->request->is('post') ) {
             if ( $this->Auth->login() ) {
-                $this->Session->setFlash('Login realizado com sucesso!', 'default', array('class' => 'alert alert-succes'));
+                $this->Session->setFlash(__('Logged with success'), 'default', array('class' => 'alert alert-succes'));
                 $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Session->setFlash('Dados de login inválidos, por favor tente novamente.', 'default', array('class' => 'alert alert-error'));
+            $this->Session->setFlash(__('Invalid login'), 'default', array('class' => 'alert alert-error'));
         }
     }
     
@@ -39,10 +39,10 @@ class UsersController extends AppController {
         
         if ( $this->request->is('post') ) {
             if ( $this->Auth->login() ) {
-                $this->Session->setFlash('<p>Login realizado com sucesso!</p>', 'default', array('class' => 'notification msgsucces'));
+                $this->Session->setFlash('<p>'.__('Logged with success').'</p>', 'default', array('class' => 'notification msgsucces'));
                 $this->redirect('/admin/pages/index/home');
             }
-            $this->Session->setFlash('<p>Dados de login inválidos, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
+            $this->Session->setFlash('<p>'.__('Invalid login').'</p>', 'default', array('class' => 'notification msgerror'));
         }
     }
     
@@ -75,10 +75,10 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('<p>Cadastro realizado com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+				$this->Session->setFlash('<p>'.__('The user has been saved').'</p>', 'default', array('class' => 'notification msgsuccess'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('<p>Não foi possível realizar o cadastro, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
+				$this->Session->setFlash('<p>'.__('The user could not be saved. Please, try again.').'</p>', 'default', array('class' => 'notification msgerror'));
 			}
 		}
 		$groups = $this->User->Group->find('list');
@@ -93,10 +93,10 @@ class UsersController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash('<p>Perfil removido com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+			$this->Session->setFlash('<p>'.__('User deleted').'</p>', 'default', array('class' => 'notification msgsuccess'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash('<p>Não foi possível remover o seu perfil, por favor tente novamente.</p>', 
+		$this->Session->setFlash('<p>'.__('User was not deleted').'</p>', 
                         'default', array('class' => 'notification msgerror'));
 		$this->redirect(array('action' => 'index'));
 	}
@@ -135,10 +135,10 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Cadastro realizado com sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('The user has been saved'), 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Não foi possível realizar o cadastro, por favor tente novamente.', 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
 		$groups = $this->User->Group->find('list');
@@ -158,10 +158,10 @@ class UsersController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Dados editados com sucesso!', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('The user has been saved'), 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Não foi possível editar os dados, por favor tente novamente.', 
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 
                                         'default', array('class' => 'alert alert-error'));
 			}
 		} else {
@@ -186,10 +186,10 @@ class UsersController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash('Perfil removido com sucesso!', 'default', array('class' => 'alert alert-success'));
+			$this->Session->setFlash(__('User deleted'), 'default', array('class' => 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash('Não foi possível remover o seu perfil, por favor tente novamente.', 
+		$this->Session->setFlash(__('User was not deleted'), 
                         'default', array('class' => 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
