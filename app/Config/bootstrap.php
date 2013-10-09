@@ -124,3 +124,5 @@ if ( $_SERVER['REMOTE_ADDR'] == '127.0.0.1' ) {
 
 App::uses('Security', 'Utility');
 Security::setHash('blowfish');
+
+Configure::write('Config.language', 'pt_BR');

@@ -1,0 +1,46 @@
+
+# GROUPS MESSAGES
+
+msgid "Invalid group"
+msgstr "Perfil/Grupo não localizado"
+
+msgid "The group has been saved"
+msgstr "Perfil adicionado com sucesso!"
+
+msgid "The group could not be saved. Please, try again."
+msgstr "Não foi possível adicionar o perfil, por favor tente novamente."
+
+msgid "Group deleted"
+msgstr "Perfil removido com sucesso!"
+
+msgid "Group was not deleted"
+msgstr "Não foi possível remover o perfil, por favor tente novamente"
+
+# GROUPS MESSAGES
+
+
+
+# USERS MESSAGES
+
+msgid "Logged with success"
+msgstr "Login realizado com sucesso!"
+
+msgid "Invalid login"
+msgstr "Dados de login inválidos, por favor tente novamente."
+
+msgid "Invalid user"
+msgstr "Usuário não localizado"
+
+msgid "The user has been saved"
+msgstr "Cadastro/edição realizada com sucesso!"
+
+msgid "The user could not be saved. Please, try again."
+msgstr "Não foi possível realizar o cadastro, por favor tente novamente"
+
+msgid "User deleted"
+msgstr "Usuário removido com sucesso!"
+
+msgid "User was not deleted"
+msgstr "Não foi possível remover o perfil do usuário, por favor tente novamente"
+
+# USERS MESSAGES
