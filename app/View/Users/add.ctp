@@ -41,7 +41,7 @@
                 echo $this->Form->input('addr_country');
                 echo $this->Form->input('addr_zip_code');
                 echo $this->Form->input('phone');
-                echo $this->Form->input('celphone');
+                echo $this->Form->input('cellphone');
                 ?>
             </fieldset>
             <?php echo $this->Form->end(array('label' => 'Cadastrar', 'value' => 'Cadastrar', 'class' => 'btn btn-primary')); ?>

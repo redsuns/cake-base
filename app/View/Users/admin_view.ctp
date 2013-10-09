@@ -83,7 +83,7 @@
 		</dd>
 		<dt><?php echo __('Celphone'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['celphone']); ?>
+			<?php echo h($user['User']['cellphone']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>

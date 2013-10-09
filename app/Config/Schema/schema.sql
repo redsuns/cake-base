@@ -56,7 +56,7 @@ CREATE  TABLE IF NOT EXISTS `users` (
   `addr_country` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
   `addr_zip_code` VARCHAR(10) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
   `phone` VARCHAR(14) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
-  `celphone` VARCHAR(15) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
+  `cellphone` VARCHAR(15) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
   `created` DATETIME NULL DEFAULT NULL ,
   `modified` DATETIME NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )

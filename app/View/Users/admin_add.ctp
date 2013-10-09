@@ -26,7 +26,7 @@
             <p><?php echo $this->Form->input('addr_country'); ?></p>
             <p><?php echo $this->Form->input('addr_zip_code', array('class' => 'cep')); ?></p>
             <p><?php echo $this->Form->input('phone', array('class' => 'telefone')); ?></p>
-            <p><?php echo $this->Form->input('celphone', array('class' => 'telefone')); ?></p>
+            <p><?php echo $this->Form->input('cellphone', array('class' => 'telefone')); ?></p>
 
             <?php echo $this->Form->end(array('value' => 'Finalizar', 'label' => 'Finalizar', 'div' => false)); ?>
         </div>

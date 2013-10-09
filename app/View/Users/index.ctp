@@ -38,7 +38,7 @@
                     <th><?php echo $this->Paginator->sort('addr_country'); ?></th>
                     <th><?php echo $this->Paginator->sort('addr_zip_code'); ?></th>
                     <th><?php echo $this->Paginator->sort('phone'); ?></th>
-                    <th><?php echo $this->Paginator->sort('celphone'); ?></th>
+                    <th><?php echo $this->Paginator->sort('cellphone'); ?></th>
                     <th><?php echo $this->Paginator->sort('created'); ?></th>
                     <th><?php echo $this->Paginator->sort('modified'); ?></th>
                     <th class="actions"><?php echo __('Actions'); ?></th>

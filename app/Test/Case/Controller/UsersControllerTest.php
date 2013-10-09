@@ -85,7 +85,7 @@ class UsersControllerTest extends ControllerTestCase {
 			'addr_country' => 'Lorem ipsum dolor sit amet',
 			'addr_zip_code' => 'Lorem ip',
 			'phone' => 'Lorem ipsum ',
-			'celphone' => 'Lorem ipsum d',
+			'cellphone' => 'Lorem ipsum d',
                 ));
             
             $this->testAction('/users/add', array('data' => $data, 'method' => 'post'));
@@ -116,7 +116,7 @@ class UsersControllerTest extends ControllerTestCase {
 			'addr_country' => 'Lorem ipsum dolor sit amet',
 			'addr_zip_code' => 'Lorem ip',
 			'phone' => 'Lorem ipsum ',
-			'celphone' => 'Lorem ipsum d',
+			'cellphone' => 'Lorem ipsum d',
                 ));
             
             $this->testAction('/users/edit/1', array('data' => $data, 'method' => 'put'));

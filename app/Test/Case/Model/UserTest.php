@@ -283,7 +283,7 @@ class UserTest extends CakeTestCase {
                             'addr_complement' => 'Lorem ipsum dolor sit amet',  'addr_district' => 'Lorem ipsum dolor sit amet',
                             'addr_city' => 'Lorem ipsum dolor sit amet',    'addr_state' => 'PR',
                             'addr_country' => 'Lorem ipsum dolor sit amet', 'addr_zip_code' => 'Lorem ip',
-                            'phone' => 'Lorem ipsum ',  'celphone' => 'Lorem ipsum d'
+                            'phone' => 'Lorem ipsum ',  'cellphone' => 'Lorem ipsum d'
 		);
             
             $this->User->create();
