@@ -21,7 +21,7 @@ class GroupsController extends AppController {
 				$this->Session->setFlash('<p>' . __('The group has been saved'). '</p>', 'default', array('class' => 'notification msgsuccess'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('<p>Não foi possível adicionar o perfil, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
+				$this->Session->setFlash('<p>'.__('The group could not be saved. Please, try again.').'</p>', 'default', array('class' => 'notification msgerror'));
 			}
 		}
 	}
@@ -34,10 +34,10 @@ class GroupsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Group->delete()) {
-			$this->Session->setFlash('<p>Perfil removido com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+			$this->Session->setFlash('<p>'.__('Group deleted').'</p>', 'default', array('class' => 'notification msgsuccess'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash('<p>Não foi possível remover o perfil</p>', 'default', array('class' => 'notification msgerror'));
+		$this->Session->setFlash('<p>'.__('Group was not deleted').'</p>', 'default', array('class' => 'notification msgerror'));
 		$this->redirect(array('action' => 'index'));
 	}
     
