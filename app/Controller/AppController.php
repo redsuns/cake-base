@@ -33,10 +33,12 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
-    public $components = array('Session', 'Auth' => array('authorize' => 'Controller'), 'DebugKit.Toolbar');
+    public $components = array('Session', 'Auth' => array('authorize' => 'Controller'), 'DebugKit.Toolbar', 'Redirects');
     
     
-    public function beforeFilter() {
+    public function beforeFilter() 
+    {
+        $this->Redirects->apply($this->request->url);
         
         $this->Auth->authenticate = array('Blowfish' => array(
                 'userModel' => 'User'
