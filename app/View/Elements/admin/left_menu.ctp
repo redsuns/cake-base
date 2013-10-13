@@ -3,10 +3,14 @@
 
         <div class="leftmenu">
             <ul>
-                <li class="pages_admin_index pages_admin_emails"><a href="#" class="editor menudrop"><span>CMS</span></a>
+                <li class="pages_admin_index pages_admin_emails sitemap_admin_index"><a href="#" class="editor menudrop"><span>CMS</span></a>
                     <ul>
                         <li><?php
                             echo $this->Html->link($this->Html->tag('span', 'Páginas estáticas'), array('controller' => 'pages', 'action' => 'index', 'admin' => true), array('class' => 'tables', 'escape' => false));
+                            ?>    
+                        </li>
+                        <li><?php
+                            echo $this->Html->link($this->Html->tag('span', 'Sitemap'), array('controller' => 'sitemap', 'action' => 'index', 'admin' => true), array('class' => 'tables', 'escape' => false));
                             ?>    
                         </li>
                     </ul>
