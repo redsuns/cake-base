@@ -96,6 +96,7 @@ class InitBase {
         $this->__habilitaPlugins();
         $this->__habilitarAdminPrefix();
         $this->__aplicarTraducao();
+        $this->__setarUrlPadrao();
         $this->__aplicarPermissoes();
         
         echo "\nPROCESSO FINALIZADO!\n\n";
@@ -157,11 +158,21 @@ class InitBase {
         exec("cp -fr app/Plugin " . $this->caminhoCopiaArquivos . "/app/");
         echo "-- Ok\n";
         
-         echo "\n-- Habilitando plugins ";
+        echo "\n-- Habilitando plugins ";
         $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", "a");
         fwrite($bootstrap, "\nCakePlugin::loadAll();\n");
         fclose($bootstrap);
         echo "-- Ok\n";
+    }
+    
+    private function __setarUrlPadrao()
+    {
+        echo "\n-- Habilitando plugins ";
+        $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", "a");
+        fwrite($bootstrap, "\nConfigure::write('URL', array('base' => 'http://dominio.com.br'));\n");
+        fclose($bootstrap);
+        echo "-- Ok\n";
+        
     }
     
     /**
