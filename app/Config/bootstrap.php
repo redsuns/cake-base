@@ -126,3 +126,5 @@ App::uses('Security', 'Utility');
 Security::setHash('blowfish');
 
 Configure::write('Config.language', 'pt_BR');
+
+Configure::write('URL', array('base' => 'http://dominio.com.br'));
