@@ -98,6 +98,7 @@ class InitBase {
         $this->__aplicarTraducao();
         $this->__setarUrlPadrao();
         $this->__aplicarPermissoes();
+        $this->__definirHashDeSenhaComoBlowfish();
         
         echo "\nPROCESSO FINALIZADO!\n\n";
     }
@@ -212,6 +213,19 @@ class InitBase {
         echo "\n-- Aplicando permissões ";
         exec("chmod -R 777 " . $this->caminhoCopiaArquivos);
         echo "-- Ok\n";
+    }
+    
+    
+    private function __definirHashDeSenhaComoBlowfish()
+    {
+        echo "\n-- Definindo Blowfish para hash de senha ";
+        $core = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", 'a+');
+        fwrite($core, "\nApp::uses('Security', 'Utility');");
+        fwrite($core, "\nSecurity::setHash('blowfish');");
+        
+        fclose($core);
+        echo "-- Ok\n";
+        
     }
     
 }
