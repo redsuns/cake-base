@@ -1,12 +1,19 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeTime', 'Utility');
+App::uses('CakeEmail', 'Network/Email');
+
 /**
  * Users Controller
  *
  * @property User $User
  */
-class UsersController extends AppController {
+class UsersController extends AppController 
+{
 
+    public $helpers = array('BrazilianStates');
+    public $uses = array('User', 'Group');
+    
     
     /**
      * 
@@ -65,27 +72,50 @@ class UsersController extends AppController {
     public function admin_index()
     {
         $this->User->recursive = 0;
-        $this->paginate = array('order' => array('created' => 'desc'));
+        $this->paginate = array(
+            'order' => array('created' => 'desc'),
+            'conditions' => array('Group.id NOT' => 1));
         
-        $this->set('users', $this->paginate());
+        $this->set('users', $this->paginate('User'));
     }
     
-    
-    public function admin_add() {
+    /**
+     * 
+     */
+    public function admin_add() 
+    {    
 		if ($this->request->is('post')) {
+                        
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('<p>'.__('The user has been saved').'</p>', 'default', array('class' => 'notification msgsuccess'));
+                                
+                                if ( 1 == $this->request->data[$this->modelClass]['send_email'] ) {
+                                    $this->_sendEmail($this->request->data, 'admin');
+                                }
+                                
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash('<p>'.__('The user could not be saved. Please, try again.').'</p>', 'default', array('class' => 'notification msgerror'));
 			}
 		}
-		$groups = $this->User->Group->find('list');
+                
+		$groups = $this->User->Group->find('list', array(
+                    'conditions' => array(
+                        'Group.id NOT' => 1
+                    ),
+                    'order' => array(
+                        'name' => 'ASC'
+                    )
+                ));
 		$this->set(compact('groups'));
 	}
         
-        
+        /**
+         * 
+         * @param string $id
+         * @throws NotFoundException
+         */
         public function admin_delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -101,23 +131,23 @@ class UsersController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
     
-/**
- * index method
- *
- * @return void
- */
+        /**
+         * index method
+         *
+         * @return void
+         */
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+        /**
+         * view method
+         *
+         * @throws NotFoundException
+         * @param string $id
+         * @return void
+         */
 	public function view($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
@@ -126,11 +156,11 @@ class UsersController extends AppController {
 		$this->set('user', $this->User->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
+        /**
+         * add method
+         *
+         * @return void
+         */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
@@ -145,13 +175,13 @@ class UsersController extends AppController {
 		$this->set(compact('groups'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+        /**
+         * edit method
+         *
+         * @throws NotFoundException
+         * @param string $id
+         * @return void
+         */
 	public function edit($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
@@ -172,13 +202,13 @@ class UsersController extends AppController {
 		$this->set(compact('groups'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+        /**
+         * delete method
+         *
+         * @throws NotFoundException
+         * @param string $id
+         * @return void
+         */
 	public function delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -193,4 +223,32 @@ class UsersController extends AppController {
                         'default', array('class' => 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+        /**
+         * 
+         * @param array $user
+         * @param string $area
+         * @return boolean
+         */
+        protected function _sendEmail($user, $area = 'site') 
+        {
+            $this->autoRender = false;
+            $this->Group->recursive = -1;
+            $viewVars = array(
+                'user' => $user,
+                'group' => $this->Group->read(null, $user['User']['group_id'])
+            );
+            
+            $email = new CakeEmail();
+            $email->addTo($user['User']['email'], $user['User']['name'] . ' ' . $user['User']['surname']);
+            $email->from('noreply@' . Configure::read('URL.domain'), Configure::read('siteName'));
+            $email->charset('urf8');
+            $email->emailFormat('html');
+            $email->subject('Registro no site');
+            $email->template( $area . '_user_register', false);
+            $email->viewVars($viewVars);
+            
+            return $email->send();
+        }
+
 }

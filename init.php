@@ -99,6 +99,7 @@ class InitBase {
         $this->__setarUrlPadrao();
         $this->__aplicarPermissoes();
         $this->__definirHashDeSenhaComoBlowfish();
+        $this->__definirSeEhModoDesenvolvimento();
         
         echo "\nPROCESSO FINALIZADO!\n\n";
     }
@@ -170,7 +171,10 @@ class InitBase {
     {
         echo "\n-- Habilitando plugins ";
         $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", "a");
-        fwrite($bootstrap, "\nConfigure::write('URL', array('base' => 'http://dominio.com.br'));\n");
+        
+        $defaultUrls = "\nConfigure::write('URL', array('domain' => 'domain.com', 'base' => 'http://', 'develop' => 'http://'))\n";
+        fwrite($bootstrap, $defaultUrls);
+        fwrite($bootstrap, "\nConfigure::write('siteName', 'Cake Base Redsuns');\n");
         fclose($bootstrap);
         echo "-- Ok\n";
         
@@ -219,13 +223,26 @@ class InitBase {
     private function __definirHashDeSenhaComoBlowfish()
     {
         echo "\n-- Definindo Blowfish para hash de senha ";
-        $core = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", 'a+');
-        fwrite($core, "\nApp::uses('Security', 'Utility');");
-        fwrite($core, "\nSecurity::setHash('blowfish');");
+        $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", 'a+');
+        fwrite($bootstrap, "\nApp::uses('Security', 'Utility');");
+        fwrite($bootstrap, "\nSecurity::setHash('blowfish');");
         
-        fclose($core);
+        fclose($bootstrap);
         echo "-- Ok\n";
         
+    }
+    
+    private function __definirSeEhModoDesenvolvimento()
+    {
+        echo "\n-- Definindo configurações para modo debug";
+        $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", 'a+');
+        
+        fwrite($bootstrap, "\n\$devMode = false;\n");
+        fwrite($bootstrap, "\nif ( 1 <= Configure::read('debug') ) {\n    \$devMode = true;\n}");
+        fwrite($bootstrap, "\nConfigure::write('isDevMode', \$devMode);\n");
+        
+        fclose($bootstrap);
+        echo "-- Ok\n";
     }
     
 }
