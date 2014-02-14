@@ -97,9 +97,9 @@ class InitBase {
         $this->__habilitarAdminPrefix();
         $this->__aplicarTraducao();
         $this->__setarUrlPadrao();
-        $this->__aplicarPermissoes();
         $this->__definirHashDeSenhaComoBlowfish();
         $this->__definirSeEhModoDesenvolvimento();
+        $this->__aplicarPermissoes();
         
         echo "\nPROCESSO FINALIZADO!\n\n";
     }
@@ -172,7 +172,7 @@ class InitBase {
         echo "\n-- Habilitando plugins ";
         $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", "a");
         
-        $defaultUrls = "\nConfigure::write('URL', array('domain' => 'domain.com', 'base' => 'http://', 'develop' => 'http://'))\n";
+        $defaultUrls = "\nConfigure::write('URL', array('domain' => 'domain.com', 'base' => 'http://', 'develop' => 'http://'));\n";
         fwrite($bootstrap, $defaultUrls);
         fwrite($bootstrap, "\nConfigure::write('siteName', 'Cake Base Redsuns');\n");
         fclose($bootstrap);
@@ -225,7 +225,7 @@ class InitBase {
         echo "\n-- Definindo Blowfish para hash de senha ";
         $bootstrap = fopen($this->caminhoCopiaArquivos . "/app/Config/bootstrap.php", 'a+');
         fwrite($bootstrap, "\nApp::uses('Security', 'Utility');");
-        fwrite($bootstrap, "\nSecurity::setHash('blowfish');");
+        fwrite($bootstrap, "\nSecurity::setHash('blowfish');\n");
         
         fclose($bootstrap);
         echo "-- Ok\n";
