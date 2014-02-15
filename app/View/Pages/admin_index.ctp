@@ -5,6 +5,7 @@
         <li id="faq"><?php echo $this->Html->link('Perguntas frequentes', array('controller' => 'pages', 'action' => 'index', 'faq', 'admin' => true)); ?></li>
         <li id="termos"><?php echo $this->Html->link('Termos de uso', array('controller' => 'pages', 'action' => 'index', 'termos', 'admin' => true)); ?></li>
         <li id="privacidade"><?php echo $this->Html->link('Privacidade', array('controller' => 'pages', 'action' => 'index', 'privacidade', 'admin' => true)); ?></li>
+        <li id="contato"><?php echo $this->Html->link('Contato', array('controller' => 'pages', 'action' => 'index', 'contato', 'admin' => true)); ?></li>
     </ul><!--maintabmenu-->
 
     <?php echo $this->Form->create('Node', array('method' => 'post')); ?>

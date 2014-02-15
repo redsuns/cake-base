@@ -44,3 +44,28 @@ msgid "User was not deleted"
 msgstr "Não foi possível remover o perfil do usuário, por favor tente novamente"
 
 # USERS MESSAGES
+
+# CONTACT MESSAGES
+
+msgid "Show amplied map"
+msgstr "Exibir mapa ampliado"
+
+msgid "Your name"
+msgstr "Seu nome"
+
+msgid "Your e-mail"
+msgstr "Seu e-mail"
+
+msgid "Subject"
+msgstr "Assunto"
+
+msgid "Your message"
+msgstr "Sua mensagem"
+
+msgid "Submit"
+msgstr "Enviar"
+
+msgid "* All fields must to be filled"
+msgstr "* Todos os campos são de preenchimento obrigatório"
+
+# CONTACT MESSAGES
