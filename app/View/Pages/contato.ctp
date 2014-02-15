@@ -32,8 +32,10 @@
                 </p>
             </div>
             <div class="span6">
-                <?php echo $this->GoogleMaps->setAddress('Rua José Cadilhe, 1283, Água Verde, Curitiba - PR')
-                                            ->frameMap();
+                <?php echo $this->GoogleMapsIframe->setAddress('Rua José Cadilhe, 1283, Água Verde, Curitiba - PR')
+                                                    ->setWidth('400px')
+                                                    ->setHeight('500px')
+                                                    ->show();
                 ?>
             </div>
         </div>

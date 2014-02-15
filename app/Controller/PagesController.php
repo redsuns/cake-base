@@ -36,8 +36,9 @@ class PagesController extends AppController {
  *
  * @var string
  */
-	public $name = 'Pages';
+    public $name = 'Pages';
     public $components = array('Email');
+    public $helpers = array('GoogleMapsIframe');
 
     /**
      * Site name
@@ -57,8 +58,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Node');
-    public $helpers = array('GoogleMaps');
+    public $uses = array('Node');
 
         
         public function admin_index( $node = 'home' )
