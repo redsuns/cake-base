@@ -58,11 +58,11 @@
       <td class="warning small"><div align="right">8&nbsp;/&nbsp;12</div></td>
       <td class="warning small"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></td>
       <td class="success big">       <div class="progress progress-success" style="width: 100px;">
-        <div class="bar" style="width: 87.96%;"></div>
+        <div class="bar" style="width: 90.74%;"></div>
        </div>
 </td>
-      <td class="success small"><div align="right">87.96%</div></td>
-      <td class="success small"><div align="right">95&nbsp;/&nbsp;108</div></td>
+      <td class="success small"><div align="right">90.74%</div></td>
+      <td class="success small"><div align="right">98&nbsp;/&nbsp;108</div></td>
      </tr>
 
      <tr>
@@ -79,13 +79,13 @@
 </td>
       <td class="warning small"><div align="right">66.67%</div></td>
       <td class="warning small"><div align="right">8&nbsp;/&nbsp;12</div></td>
-      <td class="warning small">31.66</td>
+      <td class="warning small">30.76</td>
       <td class="success big">       <div class="progress progress-success" style="width: 100px;">
-        <div class="bar" style="width: 87.74%;"></div>
+        <div class="bar" style="width: 90.57%;"></div>
        </div>
 </td>
-      <td class="success small"><div align="right">87.74%</div></td>
-      <td class="success small"><div align="right">93&nbsp;/&nbsp;106</div></td>
+      <td class="success small"><div align="right">90.57%</div></td>
+      <td class="success small"><div align="right">96&nbsp;/&nbsp;106</div></td>
      </tr>
 
      <tr>
@@ -181,13 +181,13 @@
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
       <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
-      <td class="danger small">4.29</td>
+      <td class="danger small">4.02</td>
       <td class="success big">       <div class="progress progress-success" style="width: 100px;">
-        <div class="bar" style="width: 73.68%;"></div>
+        <div class="bar" style="width: 89.47%;"></div>
        </div>
 </td>
-      <td class="success small"><div align="right">73.68%</div></td>
-      <td class="success small"><div align="right">14&nbsp;/&nbsp;19</div></td>
+      <td class="success small"><div align="right">89.47%</div></td>
+      <td class="success small"><div align="right">17&nbsp;/&nbsp;19</div></td>
      </tr>
 
      <tr>
@@ -383,18 +383,18 @@
      <tr><td><div align="right"><a name="84"></a><a href="#84">84</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="85"></a><a href="#85">85</a></div></td><td class="codeLine">    public function admin_add()</td></tr>
      <tr><td><div align="right"><a name="86"></a><a href="#86">86</a></div></td><td class="codeLine">    {</td></tr>
-     <tr class="success popin" data-title="2 tests cover line 87" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="87"></a><a href="#87">87</a></div></td><td class="codeLine">        if ($this-&gt;request-&gt;is('post')) {</td></tr>
+     <tr class="success popin" data-title="3 tests cover line 87" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="87"></a><a href="#87">87</a></div></td><td class="codeLine">        if ($this-&gt;request-&gt;is('post')) {</td></tr>
      <tr><td><div align="right"><a name="88"></a><a href="#88">88</a></div></td><td class="codeLine"></td></tr>
-     <tr class="success popin" data-title="2 tests cover line 89" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="89"></a><a href="#89">89</a></div></td><td class="codeLine">            $this-&gt;User-&gt;create();</td></tr>
-     <tr class="success popin" data-title="2 tests cover line 90" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="90"></a><a href="#90">90</a></div></td><td class="codeLine">            if ($this-&gt;User-&gt;save($this-&gt;request-&gt;data)) {</td></tr>
-     <tr class="success popin" data-title="2 tests cover line 91" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="91"></a><a href="#91">91</a></div></td><td class="codeLine">                $this-&gt;Session-&gt;setFlash('&lt;p&gt;'.__('The user has been saved').'&lt;/p&gt;', 'default', array('class' =&gt; 'notification msgsuccess'));</td></tr>
+     <tr class="success popin" data-title="3 tests cover line 89" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="89"></a><a href="#89">89</a></div></td><td class="codeLine">            $this-&gt;User-&gt;create();</td></tr>
+     <tr class="success popin" data-title="3 tests cover line 90" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="90"></a><a href="#90">90</a></div></td><td class="codeLine">            if ($this-&gt;User-&gt;save($this-&gt;request-&gt;data)) {</td></tr>
+     <tr class="success popin" data-title="3 tests cover line 91" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="91"></a><a href="#91">91</a></div></td><td class="codeLine">                $this-&gt;Session-&gt;setFlash('&lt;p&gt;'.__('The user has been saved').'&lt;/p&gt;', 'default', array('class' =&gt; 'notification msgsuccess'));</td></tr>
      <tr><td><div align="right"><a name="92"></a><a href="#92">92</a></div></td><td class="codeLine"></td></tr>
-     <tr class="success popin" data-title="2 tests cover line 93" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="93"></a><a href="#93">93</a></div></td><td class="codeLine">                                if ( 1 == $this-&gt;request-&gt;data[$this-&gt;modelClass]['send_email'] ) {</td></tr>
+     <tr class="success popin" data-title="3 tests cover line 93" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="93"></a><a href="#93">93</a></div></td><td class="codeLine">                                if ( 1 == $this-&gt;request-&gt;data[$this-&gt;modelClass]['send_email'] ) {</td></tr>
      <tr><td><div align="right"><a name="94"></a><a href="#94">94</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="95"></a><a href="#95">95</a></div></td><td class="codeLine">                                    $this-&gt;Group-&gt;recursive = -1;</td></tr>
-     <tr class="danger"><td><div align="right"><a name="96"></a><a href="#96">96</a></div></td><td class="codeLine">                                    $this-&gt;request-&gt;data['User']['group'] = $this-&gt;Group-&gt;read(null, $this-&gt;request-&gt;data['User']['group_id']);</td></tr>
+     <tr class="success popin" data-title="1 test covers line 95" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="95"></a><a href="#95">95</a></div></td><td class="codeLine">                                    $this-&gt;Group-&gt;recursive = -1;</td></tr>
+     <tr class="success popin" data-title="1 test covers line 96" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="96"></a><a href="#96">96</a></div></td><td class="codeLine">                                    $this-&gt;request-&gt;data['User']['group'] = $this-&gt;Group-&gt;read(null, $this-&gt;request-&gt;data['User']['group_id']);</td></tr>
      <tr><td><div align="right"><a name="97"></a><a href="#97">97</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="98"></a><a href="#98">98</a></div></td><td class="codeLine">                                    $this-&gt;Email-&gt;sendUserRegisterEmail($this-&gt;request-&gt;data, 'admin');</td></tr>
+     <tr class="success popin" data-title="1 test covers line 98" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddSendingEmail&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="98"></a><a href="#98">98</a></div></td><td class="codeLine">                                    $this-&gt;Email-&gt;sendUserRegisterEmail($this-&gt;request-&gt;data, 'admin');</td></tr>
      <tr class="danger"><td><div align="right"><a name="99"></a><a href="#99">99</a></div></td><td class="codeLine">                                }</td></tr>
      <tr><td><div align="right"><a name="100"></a><a href="#100">100</a></div></td><td class="codeLine"></td></tr>
      <tr class="success popin" data-title="2 tests cover line 101" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAdd&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;UsersControllerTest::testAdminAddWithErrors&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="101"></a><a href="#101">101</a></div></td><td class="codeLine">                $this-&gt;redirect(array('action' =&gt; 'index'));</td></tr>
@@ -538,7 +538,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.15</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.9-4ubuntu2.4</a> and <a href="http://phpunit.de/">PHPUnit 3.7.27</a> at Sat Feb 15 15:02:42 BRST 2014.</small>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.15</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.9-4ubuntu2.4</a> and <a href="http://phpunit.de/">PHPUnit 3.7.27</a> at Sat Feb 15 15:20:23 BRST 2014.</small>
     </p>
    </footer>
   </div>

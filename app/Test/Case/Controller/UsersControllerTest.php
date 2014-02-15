@@ -206,6 +206,22 @@ class UsersControllerTest extends ControllerTestCase {
             $this->assertNotEqual(null, $this->vars['groups']);
 	}
         
+        /**
+         * @expectedException SocketException
+         */
+        public function testAdminAddSendingEmail() 
+        {
+                
+            $data = $this->userData();
+            $data['User']['send_email'] = 1;
+            
+            $this->testAction('/admin/users/add', array('data' => $data, 'method' => 'post'));
+            
+            
+            $this->assertNoErrors();
+            $this->assertNotEqual(null, $this->vars['groups']);
+	}
+        
         
         public function testAdminAddWithErrors() 
         {

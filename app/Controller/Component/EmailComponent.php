@@ -31,7 +31,7 @@ class EmailComponent extends Component
         $email = new CakeEmail();
         $email->addTo($user['User']['email'], $user['User']['name'] . ' ' . $user['User']['surname']);
         $email->from('noreply@' . Configure::read('URL.domain'), $this->siteName);
-        $email->charset('urf8');
+        $email->charset('utf8');
         $email->emailFormat($this->emailFormat);
         $email->subject('Registro no site');
         $email->template( $area . '_user_register', false);

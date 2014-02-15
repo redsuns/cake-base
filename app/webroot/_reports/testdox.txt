@@ -71,6 +71,7 @@ UsersController
  [x] Admin logout
  [x] Admin index
  [x] Admin add
+ [x] Admin add sending email
  [x] Admin add with errors
  [x] Admin delete
  [x] Admin delete with exception
