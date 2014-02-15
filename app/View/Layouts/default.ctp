@@ -8,8 +8,10 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
+                echo $this->Html->meta('keywords', $keywords);
+                echo $this->Html->meta('description', $description);
 
-		echo $this->Html->css('bootstrap');
+		echo $this->Html->css('bootstrap.min');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
