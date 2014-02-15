@@ -37,6 +37,7 @@ class PagesController extends AppController {
  * @var string
  */
 	public $name = 'Pages';
+    public $components = array('Email');
 
     /**
      * Site name
@@ -57,6 +58,7 @@ class PagesController extends AppController {
  * @var array
  */
 	public $uses = array('Node');
+    public $helpers = array('GoogleMaps');
 
         
         public function admin_index( $node = 'home' )
@@ -105,6 +107,7 @@ class PagesController extends AppController {
 
             $this->set(compact('content', 'title', 'title_for_layout', 'keywords', 'description'));
         }
+
 
 
         public function contato()
