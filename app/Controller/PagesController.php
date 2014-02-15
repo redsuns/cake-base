@@ -38,6 +38,19 @@ class PagesController extends AppController {
  */
 	public $name = 'Pages';
 
+    /**
+     * Site name
+     *
+     * @var string
+     */
+    public $siteName;
+
+    public function beforeFilter()
+    {
+        $this->siteName = Configure::read('siteName');
+        parent::beforeFilter();
+    }
+
 /**
  * This controller does not use a model
  *
@@ -72,32 +85,52 @@ class PagesController extends AppController {
             }
             
         }
-        
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- */
-	public function display() {
-		$path = func_get_args();
 
-		$count = count($path);
-		if (!$count) {
-			$this->redirect('/');
-		}
-		$page = $subpage = $title_for_layout = null;
 
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->render(implode('/', $path));
-	}
+        public function index( $node = null )
+        {
+            $content = array();
+            $title = '';
+            $title_for_layout = $this->siteName;
+            $keywords = '';
+            $description = '';
+
+            if ( $node = $this->Node->findByLocation($node) ) {
+                $content = $node;
+                $title = Inflector::humanize($content['Node']['location']);
+                $title_for_layout .= ' - ' . $title;
+                $keywords = $content['Node']['keywords'];
+                $description = $content['Node']['description'];
+            }
+
+            $this->set(compact('content', 'title', 'title_for_layout', 'keywords', 'description'));
+        }
+
+
+        public function contato()
+        {
+
+            $title = 'Contato';
+            $title_for_layout = $this->siteName . ' - ' . $title;
+            $keywords = 'contato';
+            $description = 'Formulário de contato de ' . $this->siteName;
+            $content = '';
+
+            if ( $this->request->is('post') ) {
+
+                $this->Session->setFlash('Não foi possível enviar o contato, por favor tente novamente.', 'default', array('class' => 'alert alert-error'));
+
+                if ( $this->Email->sendContactEmail($this->request->data) ) {
+                    $this->Session->setFlash('Contato enviado com sucesso.', 'default', array('class' => 'alert alert-success'));
+                }
+
+                $this->redirect('/contato');
+            }
+
+            if ( $node = $this->Node->findByLocation('contato') ) {
+                $content = $node;
+            }
+
+            $this->set(compact('title', 'title_for_layout', 'keywords', 'description', 'content'));
+        }
 }

@@ -175,6 +175,7 @@ class InitBase {
         $defaultUrls = "\nConfigure::write('URL', array('domain' => 'domain.com', 'base' => 'http://', 'develop' => 'http://'));\n";
         fwrite($bootstrap, $defaultUrls);
         fwrite($bootstrap, "\nConfigure::write('siteName', 'Cake Base Redsuns');\n");
+        fwrite($bootstrap, "\nConfigure::write('siteEmail', 'email@dominio.com.br');\n");
         fclose($bootstrap);
         echo "-- Ok\n";
         

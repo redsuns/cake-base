@@ -95,7 +95,7 @@ class UsersController extends AppController
                                     $this->Group->recursive = -1;
                                     $this->request->data['User']['group'] = $this->Group->read(null, $this->request->data['User']['group_id']);
 
-                                    $this->Email->sendEmail($this->request->data, 'admin');
+                                    $this->Email->sendUserRegisterEmail($this->request->data, 'admin');
                                 }
                                 
 				$this->redirect(array('action' => 'index'));
