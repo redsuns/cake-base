@@ -16,10 +16,41 @@ class UsersControllerTest extends ControllerTestCase {
 		'app.user',
 		'app.group'
 	);
+        
+        
+        public function userData()
+        {
+            return array('User' => array(
+                        'group_id' => 1,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'surname' => 'Lorem ipsum dolor sit amet',
+			'email' => 'andre@redsuns.com.br',
+			'username' => 'Lorem ipsum dolor sit amet',
+                        'password' => '123',
+                        'password_confirm' => '123',
+			'address' => 'Lorem ipsum dolor sit amet',
+			'addr_number' => 1,
+			'addr_complement' => 'Lorem ipsum dolor sit amet',
+			'addr_district' => 'Lorem ipsum dolor sit amet',
+			'addr_city' => 'Lorem ipsum dolor sit amet',
+			'addr_state' => 'PR',
+			'addr_country' => 'Lorem ipsum dolor sit amet',
+			'addr_zip_code' => 'Lorem ip',
+			'phone' => 'Lorem ipsum ',
+			'cellphone' => 'Lorem ipsum d',
+                ));
+        }
 
+        public function login()
+        {
+            $data = array('User' => array('username' => 'andrecardosodev@gmail.com', 'password' => 'andre'));
+            
+            $this->testAction('/users/login', array('data' => $data, 'method' => 'post'));
+        }
+        
         
         public function testLogin() {
-            $data = array('User' => array('username' => 'andre@redsuns.com.br', 'password' => '123'));
+            $data = array('User' => array('username' => 'andrecardosodev@gmail.com', 'password' => 'andre'));
             
             $this->testAction('/users/login', array('data' => $data, 'method' => 'post'));
         }
@@ -37,7 +68,8 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testIndex() {;
             $result = $this->testAction('/users/index');
             
-            $this->assertEquals('Lorem ipsum dolor sit amet', $this->vars['users'][0]['User']['name']);
+            $this->assertEquals('Andre', $this->vars['users'][0]['User']['name']);
+            $this->assertNoErrors();
 	}
 
 /**
@@ -48,7 +80,7 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testView() {
             $result = $this->testAction('/users/view/1');
             
-            $this->assertEquals('Lorem ipsum dolor sit amet', $this->vars['user']['User']['name']);
+            $this->assertEquals('Andre', $this->vars['user']['User']['name']);
 	}
         
         
@@ -60,7 +92,7 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testViewWithException() {
             $result = $this->testAction('/users/view/ass');
             
-            $this->assertEquals('Lorem ipsum dolor sit amet', $this->vars['user']['User']['name']);
+            $this->assertEquals('Andre', $this->vars['user']['User']['name']);
 	}
 
 /**
@@ -68,25 +100,22 @@ class UsersControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testAdd() {
-                $data = array('User' => array(
-                        'group_id' => 1,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'surname' => 'Lorem ipsum dolor sit amet',
-			'email' => 'andre@redsuns.com.br',
-			'username' => 'Lorem ipsum dolor sit amet',
-                        'password' => '123',
-			'address' => 'Lorem ipsum dolor sit amet',
-			'addr_number' => 1,
-			'addr_complement' => 'Lorem ipsum dolor sit amet',
-			'addr_district' => 'Lorem ipsum dolor sit amet',
-			'addr_city' => 'Lorem ipsum dolor sit amet',
-			'addr_state' => 'PR',
-			'addr_country' => 'Lorem ipsum dolor sit amet',
-			'addr_zip_code' => 'Lorem ip',
-			'phone' => 'Lorem ipsum ',
-			'cellphone' => 'Lorem ipsum d',
-                ));
+	public function testAdd() 
+        {
+                
+            $data = $this->userData();
+            
+            $this->testAction('/users/add', array('data' => $data, 'method' => 'post'));
+            
+            $this->assertNotEqual($this->headers, null);
+	}
+        
+       
+        public function testFailAdd() 
+        {
+                
+            $data = $this->userData();
+            $data['User']['password_confirm'] = 'asdas';
             
             $this->testAction('/users/add', array('data' => $data, 'method' => 'post'));
             
@@ -94,34 +123,28 @@ class UsersControllerTest extends ControllerTestCase {
 	}
 
         
+        public function testIfEditUserIsAccessible()
+        {
+            $data = $this->userData();
+            
+            $this->testAction('/users/edit/1', array('data' => $data, 'method' => 'get'));
+            
+            $this->assertNotEqual(null, $this->vars['groups']);
+        }
+        
 /**
  * testEdit method
  *
  * @return void
  */
-	public function testEdit() {
-            $data = array('User' => array(
-                'group_id' => 1,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'surname' => 'Lorem ipsum dolor sit amet',
-			'email' => 'andre@redsuns.com.br',
-			'username' => 'Lorem ipsum dolor sit amet',
-                        'password' => '123',
-			'address' => 'Lorem ipsum dolor sit amet',
-			'addr_number' => 1,
-			'addr_complement' => 'Lorem ipsum dolor sit amet',
-			'addr_district' => 'Lorem ipsum dolor sit amet',
-			'addr_city' => 'Lorem ipsum dolor sit amet',
-			'addr_state' => 'PR',
-			'addr_country' => 'Lorem ipsum dolor sit amet',
-			'addr_zip_code' => 'Lorem ip',
-			'phone' => 'Lorem ipsum ',
-			'cellphone' => 'Lorem ipsum d',
-                ));
+	public function testEdit() 
+        {
+            
+            $data = $this->userData();
             
             $this->testAction('/users/edit/1', array('data' => $data, 'method' => 'put'));
             
-            $this->assertNotEqual($this->headers, null);
+            $this->assertNotEqual(null, $this->headers['Location']);
 	}
         
         
@@ -145,5 +168,69 @@ class UsersControllerTest extends ControllerTestCase {
         public function testDeleteWithException() {
             $this->testAction('/users/delete/asds');
         }
-
+        
+        public function testAdminLogin()
+        {
+            $data = array('User' => array('username' => 'andrecardosodev@gmail.com', 'password' => 'andre'));
+            
+            $this->testAction('/admin/users/login', array('data' => $data, 'method' => 'post'));
+            $this->assertNoErrors();
+        }
+        
+        public function testAdminLogout()
+        {
+            $this->testAction('/admin/users/logout');
+            $this->assertNoErrors();
+        }
+        
+        public function testAdminIndex() 
+        {
+            $this->login();
+            
+            $this->testAction('/admin/users');
+            
+            $this->assertNotEquals(null, $this->vars['users']);
+            $this->assertNoErrors();
+	}
+        
+        public function testAdminAdd() 
+        {
+                
+            $data = $this->userData();
+            $data['User']['send_email'] = false;
+            
+            $this->testAction('/admin/users/add', array('data' => $data, 'method' => 'post'));
+            
+            
+            $this->assertNoErrors();
+            $this->assertNotEqual(null, $this->vars['groups']);
+	}
+        
+        
+        public function testAdminAddWithErrors() 
+        {
+                
+            $data = $this->userData();
+            $data['User']['send_email'] = false;
+            $date['User']['password_confirm'] = 'asdas';
+            
+            $this->testAction('/admin/users/add', array('data' => $data, 'method' => 'post'));
+            
+            $this->assertNoErrors();
+	}
+        
+        public function testAdminDelete() {
+            $this->testAction('/admin/users/delete/1', array('data' => array('User.id' => 1), 'method' => 'post'));
+            $this->assertNoErrors();
+        }
+        
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testAdminDeleteWithException() {
+            $this->testAction('/admin/users/delete/asds');
+        }
+        
+        
 }

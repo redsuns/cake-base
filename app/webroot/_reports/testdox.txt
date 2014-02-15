@@ -1,0 +1,77 @@
+Group
+ [x] Empty name
+ [x] Full enroll
+
+Node
+ [x] If validation for empty type was called
+ [x] Ifvalidation for empty location was called
+
+User
+ [x] Not empty group id
+ [x] Not empty name
+ [x] Not empty sur name
+ [x] Not empty email
+ [x] Not invalid email
+ [x] Not empty username
+ [x] Not empty password
+ [x] Not empty password confirm
+ [x] Not empty compare diff passwords
+ [x] Not empty compare equal passwords
+ [x] Not empty address
+ [x] Not empty address number
+ [x] Not address number not a number
+ [x] Not empty district
+ [x] Not empty city
+ [x] Not empty state
+ [x] Not empty country
+ [x] Not empty zip code
+ [x] Not empty phone
+ [x] Full enroll
+ [x] Edit user
+ [x] Pass recover
+
+GroupsController
+ [x] Index
+ [x] Admin index
+ [x] View
+ [x] View with exception
+ [x] Add
+ [x] Admin add
+ [x] Edit
+ [x] Edit with exeption
+ [x] Delete
+ [x] Admin delete
+ [x] Delete with exeption
+ [x] Admin delete with exeption
+
+PagesController
+ [x] If index is accessible
+ [x] If contact is accessible
+ [x] If is sending contact
+ [x] If is able to read content to fixed pages
+ [x] If admin index is accessible
+ [x] If admin index is getting requested page
+ [x] If admin index is able to save modified page
+ [x] If admin index is able to reject invalid page location
+
+UsersController
+ [x] Login
+ [x] Logout
+ [x] Index
+ [x] View
+ [x] View with exception
+ [x] Add
+ [x] Fail add
+ [x] If edit user is accessible
+ [x] Edit
+ [x] Edit with exception
+ [x] Delete
+ [x] Delete with exception
+ [x] Admin login
+ [x] Admin logout
+ [x] Admin index
+ [x] Admin add
+ [x] Admin add with errors
+ [x] Admin delete
+ [x] Admin delete with exception
+

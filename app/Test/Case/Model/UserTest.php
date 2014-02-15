@@ -38,10 +38,31 @@ class UserTest extends CakeTestCase {
 		parent::tearDown();
 	}
         
+        public function userData()
+        {
+            return array('User' => array(
+                        'group_id' => 1,
+                        'name' => 'Andre',
+                        'surname' => 'Cardoso',
+                        'email' => 'andrecardosodev@gmail.com',
+                        'username' => 'andrecardosodev@gmail.com',
+                        'password' => 'andre',
+                        'password_confirm' => 'andre',
+                        'address' => 'Rua teste',
+                        'addr_number' => 1234,
+                        'addr_complement' => '',
+                        'addr_district' => 'Cajuru',
+                        'addr_city' => 'Curitiba',
+                        'addr_state' => 'PR',
+                        'addr_country' => 'Brasil',
+                        'addr_zip_code' => '88888-888',
+                        'phone' => '(99) 9999-9999',
+                        'cellphone' => '(99) 9999-9999'
+                )
+		);
+        }
         
-        /**
-         * 
-         */
+        
         public function testNotEmptyGroupId() {
             $this->User->set(array('group_id' => ''));
             
@@ -51,9 +72,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyName() {
             $this->User->set(array('name' => ''));
             
@@ -63,9 +81,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptySurName() {
             $this->User->set(array('surname' => ''));
             
@@ -75,9 +90,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyEmail() {
             $this->User->set(array('email' => ''));
             
@@ -87,9 +99,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotInvalidEmail() {
             $this->User->set(array('email' => 'asdsads'));
             
@@ -99,9 +108,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyUsername() {
             $this->User->set(array('username' => ''));
             
@@ -111,10 +117,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        
-        /**
-         * 
-         */
         public function testNotEmptyPassword() {
             $this->User->set(array('password' => ''));
             
@@ -124,9 +126,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyPasswordConfirm() {
             $this->User->set(array('password_confirm' => ''));
             
@@ -136,9 +135,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyCompareDiffPasswords() {
             $this->User->set(array('password_confirm' => '123', 'password' => '1s23'));
             
@@ -148,9 +144,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyCompareEqualPasswords() {
             $this->User->set(array('password_confirm' => '123', 'password' => '123'));
             
@@ -160,9 +153,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyAddress() {
             $this->User->set(array('address' => ''));
             
@@ -172,9 +162,6 @@ class UserTest extends CakeTestCase {
         }
        
         
-        /**
-         * 
-         */
         public function testNotEmptyAddressNumber() {
             $this->User->set(array('addr_number' => ''));
             
@@ -184,9 +171,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotAddressNumberNotANumber() {
             $this->User->set(array('addr_number' => 'ewqwq'));
             
@@ -196,9 +180,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyDistrict() {
             $this->User->set(array('addr_district' => ''));
             
@@ -208,9 +189,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyCity() {
             $this->User->set(array('addr_city' => ''));
             
@@ -220,9 +198,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyState() {
             $this->User->set(array('addr_state' => ''));
             
@@ -232,9 +207,6 @@ class UserTest extends CakeTestCase {
         }
         
         
-        /**
-         * 
-         */
         public function testNotEmptyCountry() {
             $this->User->set(array('addr_country' => ''));
             
@@ -243,10 +215,7 @@ class UserTest extends CakeTestCase {
             $this->assertFalse($result, 'Permitiu cadastro de usuário sem país');
         }
         
-        
-        /**
-         * 
-         */
+       
         public function testNotEmptyZipCode() {
             $this->User->set(array('addr_zip_code' => ''));
             
@@ -255,10 +224,7 @@ class UserTest extends CakeTestCase {
             $this->assertFalse($result, 'Permitiu cadastro de usuário sem CEP');
         }
         
-        
-        /**
-         * 
-         */
+       
         public function testNotEmptyPhone() {
             $this->User->set(array('phone' => ''));
             
@@ -267,32 +233,40 @@ class UserTest extends CakeTestCase {
             $this->assertFalse($result, 'Permitiu cadastro de usuário sem telefone');
         }
         
-        
-        
-        
-        
-        /**
-         * 
-         */
+         
         public function testFullEnroll() {
-            $data = array(  'group_id' => 1, 'name' => 'Lorem ipsum dolor sit amet',
-                            'surname' => 'Lorem ipsum dolor sit amet',  'email' => 'andre@redsuns.com.br',
-                            'username' => 'Lorem ipsum dolor sit amet', 'password' => '123456',
-                            'password_confirm' => '123456',
-                            'address' => 'Lorem ipsum dolor sit amet',  'addr_number' => 134,
-                            'addr_complement' => 'Lorem ipsum dolor sit amet',  'addr_district' => 'Lorem ipsum dolor sit amet',
-                            'addr_city' => 'Lorem ipsum dolor sit amet',    'addr_state' => 'PR',
-                            'addr_country' => 'Lorem ipsum dolor sit amet', 'addr_zip_code' => 'Lorem ip',
-                            'phone' => 'Lorem ipsum ',  'cellphone' => 'Lorem ipsum d'
-		);
             
             $this->User->create();
             
-            $this->User->save($data);
+            $this->User->save($this->userData());
             
             $result = $this->User->validates();
             
             $this->assertTrue($result, 'Não realizou o cadastro');
+            
+        }
+        
+        public function testEditUser() 
+        {
+            
+            $data = $this->userData();
+            $firsName = $data['User']['name'];
+           
+            $this->User->create();
+            $this->User->save($data);
+            
+            $data['User']['id'] = 1;
+            $data['User']['name'] = 'Teste';
+            $data['User']['password'] = '';
+            $data['User']['password_confirm'] = '';
+            
+            $this->User->create();
+            $this->User->save($data);
+            
+            $result = $this->User->read(null, $data['User']['id']);
+            
+            $this->assertNotEqual($firsName, $result['User']['name']);
+            $this->assertEqual($data['User']['name'], $result['User']['name']);
             
         }
         

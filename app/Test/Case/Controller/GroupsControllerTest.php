@@ -22,10 +22,18 @@ class GroupsControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testIndex() {
+	public function testIndex()
+        {
             $result = $this->testAction('/groups/index');
             
             $this->assertEquals('Administrator', $this->vars['groups'][0]['Group']['name']);
+	}
+        
+        public function testAdminIndex() 
+        {
+            $result = $this->testAction('/admin/groups/index');
+            $this->assertNoErrors();
+            $this->assertNotNull($this->vars['groups'][0]);
 	}
 
 /**
@@ -33,11 +41,13 @@ class GroupsControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testView() {
+	public function testView()
+        {
             $result = $this->testAction('/groups/view/1');
             
             $this->assertEquals('Administrator', $this->vars['group']['Group']['name']);
 	}
+        
         
         /**
          * @expectedException NotFoundException
@@ -51,12 +61,22 @@ class GroupsControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testAdd() {
+	public function testAdd() 
+        {
             $data = array('Group' => array('name' => 'Admin'));
             
             $this->testAction('/groups/add', array('data' => $data, 'method' => 'post'));
             
             $this->assertNotEqual($this->headers, null);
+	}
+        
+        public function testAdminAdd() 
+        {
+            $data = array('Group' => array('name' => 'Admin'));
+            
+            $this->testAction('/admin/groups/add', array('data' => $data, 'method' => 'post'));
+            $this->assertNoErrors();
+            $this->assertNotNull($this->headers['Location']);
 	}
 
         
@@ -81,9 +101,17 @@ class GroupsControllerTest extends ControllerTestCase {
         }
 
         
-        public function testDelete() {
+        public function testDelete() 
+        {
             $this->testAction('/groups/delete/1', array('data' => array('Group.id' => 1), 'method' => 'post'));
             $this->assertNotEqual($this->headers, null);
+        }
+        
+        public function testAdminDelete()
+        {
+            $this->testAction('/admin/groups/delete/1', array('data' => array('Group.id' => 1), 'method' => 'post'));
+            $this->assertNoErrors();
+            $this->assertNotNull($this->headers['Location']);
         }
         
         /**
@@ -91,5 +119,12 @@ class GroupsControllerTest extends ControllerTestCase {
          */
         public function testDeleteWithExeption() {
             $this->testAction('/groups/delete/asdsa');
+        }
+        
+        /**
+         * @expectedException NotFoundException
+         */
+        public function testAdminDeleteWithExeption() {
+            $this->testAction('/admin/groups/delete/asdsa');
         }
 }

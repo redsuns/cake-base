@@ -33,14 +33,24 @@ class NodeFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'type' => 'Lorem ipsum dolor sit amet',
-			'location' => 'Lorem ipsum dolor sit amet',
+			'type' => 'page',
+			'location' => 'sobre',
 			'main' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'description' => 'Lorem ipsum dolor sit amet',
 			'keywords' => 'Lorem ipsum dolor sit amet',
 			'created' => '2013-09-11 20:49:04',
 			'modified' => '2013-09-11 20:49:04'
 		),
+                array(
+                            'id' => 2,
+                            'type' => 'page',
+                            'location' => 'contato',
+                            'main' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                            'description' => 'Lorem ipsum dolor sit amet',
+                            'keywords' => 'Lorem ipsum dolor sit amet',
+                            'created' => '2013-09-11 20:49:04',
+                            'modified' => '2013-09-11 20:49:04'
+                    ),
 	);
 
 }
