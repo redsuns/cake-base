@@ -55,6 +55,14 @@
             </div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
-        <?php echo $this->Html->script('bootstrap'); ?>
+        <?php 
+            echo $this->Html->script('jquery');
+            echo $this->Html->script('jquery-masked-input');
+            echo $this->Html->script('bootstrap.min');
+            
+            if (class_exists('JsHelper') && method_exists($this->Js, 'writeBuffer')) {
+                echo $this->Js->writeBuffer();
+            }
+        ?>
 </body>
 </html>

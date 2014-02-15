@@ -34,6 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     
     public $components = array('Session', 'Auth' => array('authorize' => 'Controller'), 'DebugKit.Toolbar', 'Redirects');
+    public $helpers = array('Js');
     
     
     public function beforeFilter() 
