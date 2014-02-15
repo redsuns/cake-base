@@ -1,7 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('CakeTime', 'Utility');
-App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Users Controller
@@ -13,6 +12,7 @@ class UsersController extends AppController
 
     public $helpers = array('BrazilianStates');
     public $uses = array('User', 'Group');
+    public $components = array('Email');
     
     
     /**
@@ -91,7 +91,11 @@ class UsersController extends AppController
 				$this->Session->setFlash('<p>'.__('The user has been saved').'</p>', 'default', array('class' => 'notification msgsuccess'));
                                 
                                 if ( 1 == $this->request->data[$this->modelClass]['send_email'] ) {
-                                    $this->_sendEmail($this->request->data, 'admin');
+
+                                    $this->Group->recursive = -1;
+                                    $this->request->data['User']['group'] = $this->Group->read(null, $this->request->data['User']['group_id']);
+
+                                    $this->Email->sendEmail($this->request->data, 'admin');
                                 }
                                 
 				$this->redirect(array('action' => 'index'));
@@ -223,32 +227,4 @@ class UsersController extends AppController
                         'default', array('class' => 'alert alert-error'));
 		$this->redirect(array('action' => 'index'));
 	}
-        
-        /**
-         * 
-         * @param array $user
-         * @param string $area
-         * @return boolean
-         */
-        protected function _sendEmail($user, $area = 'site') 
-        {
-            $this->autoRender = false;
-            $this->Group->recursive = -1;
-            $viewVars = array(
-                'user' => $user,
-                'group' => $this->Group->read(null, $user['User']['group_id'])
-            );
-            
-            $email = new CakeEmail();
-            $email->addTo($user['User']['email'], $user['User']['name'] . ' ' . $user['User']['surname']);
-            $email->from('noreply@' . Configure::read('URL.domain'), Configure::read('siteName'));
-            $email->charset('urf8');
-            $email->emailFormat('html');
-            $email->subject('Registro no site');
-            $email->template( $area . '_user_register', false);
-            $email->viewVars($viewVars);
-            
-            return $email->send();
-        }
-
 }
