@@ -68,4 +68,19 @@ msgstr "Enviar"
 msgid "* All fields must to be filled"
 msgstr "* Todos os campos são de preenchimento obrigatório"
 
+msgid "Contact"
+msgstr "Contato"
+
+msgid "contact"
+msgstr "contato"
+
+msgid "Contact form"
+msgstr "Formulário de contato de"
+
+msgid "Contact not sent"
+msgstr "Não foi possível enviar o contato, por favor tente novamente."
+
+msgid "Contact sent"
+msgstr "Contato enviado com sucesso, se necessário em breve lhe retornaremos."
+
 # CONTACT MESSAGES

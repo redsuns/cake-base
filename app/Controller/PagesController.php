@@ -113,18 +113,18 @@ class PagesController extends AppController {
         public function contato()
         {
 
-            $title = 'Contato';
+            $title = __('Contact');
             $title_for_layout = $this->siteName . ' - ' . $title;
-            $keywords = 'contato';
-            $description = 'Formulário de contato de ' . $this->siteName;
+            $keywords = __('contact');
+            $description = __('Contact form') .' ' . $this->siteName;
             $content = '';
 
             if ( $this->request->is('post') ) {
 
-                $this->Session->setFlash('Não foi possível enviar o contato, por favor tente novamente.', 'default', array('class' => 'alert alert-error'));
+                $this->Session->setFlash(__('Contact not sent'), 'default', array('class' => 'alert alert-error'));
 
                 if ( $this->Email->sendContactEmail($this->request->data) ) {
-                    $this->Session->setFlash('Contato enviado com sucesso.', 'default', array('class' => 'alert alert-success'));
+                    $this->Session->setFlash(__('Contact sent'), 'default', array('class' => 'alert alert-success'));
                 }
 
                 $this->redirect('/contato');
