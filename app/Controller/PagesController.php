@@ -132,6 +132,8 @@ class PagesController extends AppController {
 
             if ( $node = $this->Node->findByLocation('contato') ) {
                 $content = $node;
+                $keywords = $node['Node']['keywords'];
+                $description = $node['Node']['description'];
             }
 
             $this->set(compact('title', 'title_for_layout', 'keywords', 'description', 'content'));
