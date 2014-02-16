@@ -36,9 +36,13 @@ GroupsController
  [x] View
  [x] View with exception
  [x] Add
+ [x] Add fail
  [x] Admin add
+ [x] Admin add fail
+ [x] If edit is accessible
  [x] Edit
  [x] Edit with exeption
+ [x] Edit with fail
  [x] Delete
  [x] Admin delete
  [x] Delete with exeption
@@ -64,6 +68,7 @@ UsersController
  [x] Fail add
  [x] If edit user is accessible
  [x] Edit
+ [x] Edit fail
  [x] Edit with exception
  [x] Delete
  [x] Delete with exception
@@ -71,6 +76,7 @@ UsersController
  [x] Admin logout
  [x] Admin index
  [x] Admin add
+ [x] Admin add fail
  [x] Admin add sending email
  [x] Admin add with errors
  [x] Admin delete

@@ -33,7 +33,8 @@ class GroupsControllerTest extends ControllerTestCase {
         {
             $result = $this->testAction('/admin/groups/index');
             $this->assertNoErrors();
-            $this->assertNotNull($this->vars['groups'][0]);
+            
+            $this->assertEquals('Administrator', $this->vars['groups'][0]['Group']['name']);
 	}
 
 /**
@@ -44,8 +45,8 @@ class GroupsControllerTest extends ControllerTestCase {
 	public function testView()
         {
             $result = $this->testAction('/groups/view/1');
-            
-            $this->assertEquals('Administrator', $this->vars['group']['Group']['name']);
+            $this->assertNoErrors();
+            $this->assertNotNull($this->vars['group']);
 	}
         
         
@@ -70,16 +71,36 @@ class GroupsControllerTest extends ControllerTestCase {
             $this->assertNotEqual($this->headers, null);
 	}
         
+        public function testAddFail() 
+        {
+            $data = array('Group' => array('name' => null));
+            
+            $this->testAction('/groups/add', array('data' => $data, 'method' => 'post'));
+            
+            $this->assertNotEqual($this->headers, null);
+	}
+        
         public function testAdminAdd() 
         {
             $data = array('Group' => array('name' => 'Admin'));
             
             $this->testAction('/admin/groups/add', array('data' => $data, 'method' => 'post'));
-            $this->assertNoErrors();
+            
             $this->assertNotNull($this->headers['Location']);
 	}
-
         
+        public function testAdminAddFail()
+        {
+            $data = array('Group' => array('name' => null));
+            
+            $this->testAction('/admin/groups/add', array('data' => $data, 'method' => 'post'));
+        }
+
+        public function testIfEditIsAccessible()
+        {
+            $this->testAction('/groups/edit/1', array('method' => 'get'));
+            $this->assertNotNull($this->vars);
+        }
 /**
  * testEdit method
  *
@@ -93,11 +114,22 @@ class GroupsControllerTest extends ControllerTestCase {
             $this->assertNotEqual($this->headers, null);
 	}
         
+        
+        
         /**
          * @expectedException NotFoundException
          */
         public function testEditWithExeption() {
             $this->testAction('/groups/edit/asdsa');
+        }
+        
+        public function testEditWithFail()
+        {
+            $data = array('Group' => array('name' => null));
+            
+            $this->testAction('/groups/edit/1', array('data' => $data, 'method' => 'put'));
+            
+            $this->assertNotEqual($this->headers, null);
         }
 
         
