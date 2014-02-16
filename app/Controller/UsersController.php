@@ -46,7 +46,7 @@ class UsersController extends AppController
         
         if ( $this->request->is('post') ) {
             if ( $this->Auth->login() ) {
-                $this->Session->setFlash('<p>'.__('Logged with success').'</p>', 'default', array('class' => 'notification msgsucces'));
+                $this->Session->setFlash('<p>'.__('Logged with success').'</p>', 'default', array('class' => 'notification msgsuccess'));
                 $this->redirect('/admin/pages/index/home');
             }
             $this->Session->setFlash('<p>'.__('Invalid login').'</p>', 'default', array('class' => 'notification msgerror'));
