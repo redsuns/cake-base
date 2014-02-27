@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -29,13 +30,14 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class PagesController extends AppController {
+class PagesController extends AppController
+{
 
-/**
- * Controller name
- *
- * @var string
- */
+    /**
+     * Controller name
+     *
+     * @var string
+     */
     public $name = 'Pages';
     public $components = array('Email');
     public $helpers = array('GoogleMapsIframe');
@@ -53,89 +55,122 @@ class PagesController extends AppController {
         parent::beforeFilter();
     }
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
+    /**
+     * This controller does not use a model
+     *
+     * @var array
+     */
     public $uses = array('Node');
 
-        
-        public function admin_index( $node = 'home' )
-        {
-            $this->set('title_for_layout', Inflector::humanize($node));
-            
-            if ( !empty($this->request->data) ) {
-                $this->Node->create();
-                if ( $this->Node->save($this->request->data) ) {
-                    $this->Session->setFlash('<p>Conteúdo atualizado com sucesso!</p>', 'default', 
-                            array('class' => 'notification msgsuccess'));
-                    $this->redirect(array('controller' => 'pages', 'action' => 'index', $node, 'admin' => true));
-                } else {
-                    $this->Session->setFlash('<p>Não foi possível gravar o conteudo, por favor tente novamente.</p>', 
-                            'default', array('class' => 'notification msgerror'));
-                }
-            }
-            
-            $page = $this->Node->find('first', array('conditions' => array('type' => 'page', 'location' => $node)));
-            if( $page ) {
-                $this->request->data = $page;
+    public function admin_index($node = 'home')
+    {
+        $this->set('title_for_layout', Inflector::humanize($node));
+
+        if (!empty($this->request->data)) {
+            $this->Node->create();
+            if ($this->Node->save($this->request->data)) {
+                $this->Session->setFlash('<p>Conteúdo atualizado com sucesso!</p>', 'default', array('class' => 'notification msgsuccess'));
+                $this->redirect(array('controller' => 'pages', 'action' => 'index', $node, 'admin' => true));
             } else {
-                $this->request->data = array('Node' => 
-                    array('type' => 'page', 'location' => $node, 'content' => '',
-                        'keywords' => '', 'description' => ''));
+                $this->Session->setFlash('<p>Não foi possível gravar o conteudo, por favor tente novamente.</p>', 'default', array('class' => 'notification msgerror'));
             }
-            
         }
 
+        $page = $this->Node->find('first', array('conditions' => array('type' => 'page', 'location' => $node)));
+        if ($page) {
+            $this->request->data = $page;
+        } else {
+            $this->request->data = array('Node' =>
+                array('type' => 'page', 'location' => $node, 'content' => '',
+                    'keywords' => '', 'description' => ''));
+        }
+    }
 
-        public function index( $node = null )
-        {
-            $content = array();
-            $title = '';
-            $title_for_layout = $this->siteName;
-            $keywords = '';
-            $description = '';
+    public function index($node = null)
+    {
+        $content = array();
+        $title = '';
+        $title_for_layout = $this->siteName;
+        $keywords = '';
+        $description = '';
 
-            if ( $node = $this->Node->findByLocation($node) ) {
-                $content = $node;
-                $title = Inflector::humanize($content['Node']['location']);
-                $title_for_layout .= ' - ' . $title;
-                $keywords = $content['Node']['keywords'];
-                $description = $content['Node']['description'];
-            }
-
-            $this->set(compact('content', 'title', 'title_for_layout', 'keywords', 'description'));
+        if ($node = $this->Node->findByLocation($node)) {
+            $content = $node;
+            $title = Inflector::humanize($content['Node']['location']);
+            $title_for_layout .= ' - ' . $title;
+            $keywords = $content['Node']['keywords'];
+            $description = $content['Node']['description'];
         }
 
+        $this->set(compact('content', 'title', 'title_for_layout', 'keywords', 'description'));
+    }
 
+    public function contato()
+    {
 
-        public function contato()
-        {
+        $title = __('Contact');
+        $title_for_layout = $this->siteName . ' - ' . $title;
+        $keywords = __('contact');
+        $description = __('Contact form') . ' ' . $this->siteName;
+        $content = '';
 
-            $title = __('Contact');
-            $title_for_layout = $this->siteName . ' - ' . $title;
-            $keywords = __('contact');
-            $description = __('Contact form') .' ' . $this->siteName;
-            $content = '';
+        if ($this->request->is('post')) {
 
-            if ( $this->request->is('post') ) {
+            $this->Session->setFlash(__('Contact not sent'), 'default', array('class' => 'alert alert-error'));
 
-                $this->Session->setFlash(__('Contact not sent'), 'default', array('class' => 'alert alert-error'));
-
-                if ( $this->Email->sendContactEmail($this->request->data) ) {
-                    $this->Session->setFlash(__('Contact sent'), 'default', array('class' => 'alert alert-success'));
-                }
-
-                $this->redirect('/contato');
+            if ($this->Email->sendContactEmail($this->request->data)) {
+                $this->Session->setFlash(__('Contact sent'), 'default', array('class' => 'alert alert-success'));
             }
 
-            if ( $node = $this->Node->findByLocation('contato') ) {
-                $content = $node;
-                $keywords = $node['Node']['keywords'];
-                $description = $node['Node']['description'];
-            }
-
-            $this->set(compact('title', 'title_for_layout', 'keywords', 'description', 'content'));
+            $this->redirect('/contato');
         }
+
+        if ($node = $this->Node->findByLocation('contato')) {
+            $content = $node;
+            $keywords = $node['Node']['keywords'];
+            $description = $node['Node']['description'];
+        }
+
+        $this->set(compact('title', 'title_for_layout', 'keywords', 'description', 'content'));
+    }
+
+    /**
+     * Displays a view
+     *
+     * @param mixed What page to display
+     * @return void
+     * @throws NotFoundException When the view file could not be found
+     * 	or MissingViewException in debug mode.
+     */
+    public function display()
+    {
+        $path = func_get_args();
+
+        $count = count($path);
+        if (!$count) {
+            return $this->redirect('/');
+        }
+        $page = $subpage = $title_for_layout = null;
+
+        if (!empty($path[0])) {
+            $page = $path[0];
+        }
+        if (!empty($path[1])) {
+            $subpage = $path[1];
+        }
+        if (!empty($path[$count - 1])) {
+            $title_for_layout = Inflector::humanize($path[$count - 1]);
+        }
+        $this->set(compact('page', 'subpage', 'title_for_layout'));
+
+        try {
+            $this->render(implode('/', $path));
+        } catch (MissingViewException $e) {
+            if (Configure::read('debug')) {
+                throw $e;
+            }
+            throw new NotFoundException();
+        }
+    }
+
 }
