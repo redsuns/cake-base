@@ -6,49 +6,74 @@
 class GoogleMapsIframeHelper extends AppHelper
 {
     protected $address;
-    protected $idCanvas;
     protected $width = '400';
     protected $height = '500';
     protected $frameContent = '';
 
     /**
      * @param string $address
-     * @return $this
+     * @return \GoogleMapsIframeHelper
      */
     public function setAddress( $address )
     {
         $this->address = $address;
         return $this;
     }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
 
     /**
      * Set the map width in pixels eg. 470.
      * Isn´t need to add "px" suffix
-     * 
+     *
      * @param string $width
-     * @return $this
+     * @return \GoogleMapsIframeHelper
      */
     public function setWidth( $width )
     {
         $this->width = $width;
         return $this;
     }
+    
+    /**
+     * 
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
 
     /**
      * Set the map height in pixels eg. 470.
      * Isn´t need to add "px" suffix
-     * 
+     *
      * @param string $height
-     * @return $this
+     * @return \GoogleMapsIframeHelper
      */
     public function setHeight( $height )
     {
         $this->height = $height;
         return $this;
     }
-
+    
     /**
      * 
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
      * @return string
      */
     public function show()
@@ -57,7 +82,6 @@ class GoogleMapsIframeHelper extends AppHelper
     }
 
     /**
-     * 
      * @return \GoogleMapsIframeHelper
      */
     protected function _setFrameContent()
@@ -75,7 +99,7 @@ class GoogleMapsIframeHelper extends AppHelper
         $mapElement .= 'text-align:left">' . __('Show amplied map') . '</a></small>';
 
         $this->frameContent = $mapElement;
-        
+
         return $this;
     }
 } 

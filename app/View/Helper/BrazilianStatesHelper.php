@@ -45,5 +45,45 @@ class BrazilianStatesHelper extends AppHelper
     {
         return $this->states;
     }
+    
+    /**
+     * 
+     * @param string $uf
+     * @return string|null
+     * @throws InvalidArgumentException
+     */
+    public function getState( $uf = null )
+    {
+        if( empty($uf) ) {
+            throw new NotFoundException(__('Invalid State'));
+        }
+        
+        if ( array_key_exists($uf, $this->states) ) {
+            return $this->states[$uf];
+        }
+        
+        return null;
+    }
+    
+    /**
+     * 
+     * @param string $stateName
+     * @return string|null
+     * @throws NotFoundException
+     */
+    public function getStateByName( $stateName = null )
+    {
+        if ( empty($stateName) ) {
+            throw new NotFoundException(__('Invalid State'));
+        }
+        
+        $states = array_flip($this->states);
+        
+        if ( array_key_exists($stateName, $states) ) {
+            return $states[$stateName];
+        }
+        
+        return null;
+    }
 
 }

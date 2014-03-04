@@ -82,3 +82,18 @@ UsersController
  [x] Admin delete
  [x] Admin delete with exception
 
+BrazilianStatesHelper
+ [x] If is an array
+ [x] If is throwing exception as expected
+ [x] If is retriving only one state
+ [x] If is returning null value on invalid state
+ [x] If is retrieving state by name and returning u f
+ [x] If is trowing exception on null state name passed argument
+ [x] If is returning null on not found array key state name
+
+GoogleMapsIframeHelper
+ [x] if is setting address
+ [x] If is setting width
+ [x] If is setting height
+ [x] If is showing map as expected
+
