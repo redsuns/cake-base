@@ -1,10 +1,11 @@
-Group
- [x] Empty name
- [x] Full enroll
-
-Node
- [x] If validation for empty type was called
- [x] Ifvalidation for empty location was called
+UploadBehavior
+ [x] Allow type
+ [x] If is setting width
+ [x] Detach file
+ [x] The upload png
+ [x] The upload jpg
+ [x] The upload gif not allowed
+ [x] The upload gif allowed but not saved
 
 User
  [x] Not empty group id
@@ -30,6 +31,14 @@ User
  [x] Edit user
  [x] Pass recover
 
+Node
+ [x] If validation for empty type was called
+ [x] Ifvalidation for empty location was called
+
+Group
+ [x] Empty name
+ [x] Full enroll
+
 GroupsController
  [x] Index
  [x] Admin index
@@ -47,16 +56,6 @@ GroupsController
  [x] Admin delete
  [x] Delete with exeption
  [x] Admin delete with exeption
-
-PagesController
- [x] If index is accessible
- [x] If contact is accessible
- [x] If is sending contact
- [x] If is able to read content to fixed pages
- [x] If admin index is accessible
- [x] If admin index is getting requested page
- [x] If admin index is able to save modified page
- [x] If admin index is able to reject invalid page location
 
 UsersController
  [x] Login
@@ -82,6 +81,23 @@ UsersController
  [x] Admin delete
  [x] Admin delete with exception
 
+PagesController
+ [x] If index is accessible
+ [x] If contact is accessible
+ [x] If is sending contact
+ [x] If is able to read content to fixed pages
+ [x] If admin index is accessible
+ [x] If admin index is getting requested page
+ [x] If admin index is able to save modified page
+ [x] If admin index is able to reject invalid page location
+ [x] If is sending email
+
+GoogleMapsIframeHelper
+ [x] if is setting address
+ [x] If is setting width
+ [x] If is setting height
+ [x] If is showing map as expected
+
 BrazilianStatesHelper
  [x] If is an array
  [x] If is throwing exception as expected
@@ -90,10 +106,4 @@ BrazilianStatesHelper
  [x] If is retrieving state by name and returning u f
  [x] If is trowing exception on null state name passed argument
  [x] If is returning null on not found array key state name
-
-GoogleMapsIframeHelper
- [x] if is setting address
- [x] If is setting width
- [x] If is setting height
- [x] If is showing map as expected
 

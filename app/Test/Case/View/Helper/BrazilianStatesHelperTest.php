@@ -4,7 +4,7 @@ App::uses('AppHelper', 'View/Helper');
 App::uses('BrazilianStatesHelper', 'View/Helper');
 
 /**
- * @group Helper
+ * @group App
  */
 class BrazilianStatesHelperTest extends CakeTestCase
 {

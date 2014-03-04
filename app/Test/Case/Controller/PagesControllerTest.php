@@ -1,42 +1,33 @@
 <?php
 
 App::uses('PagesController', 'Controller');
+App::uses('EmailComponent', 'Controller/Component');
 
 
+/**
+ * @group App
+ */
 class PagesControllerTest extends ControllerTestCase
 {
 
     public $fixtures = array(
-        'app.node'
+        'app.node',
+        'app.user',
+        'app.group'
     );
     
-    
-    public function setUp()
-    {
-        
-    }
-    
-    public function tearDown()
-    {
-        
-    }
     
     public function testIfIndexIsAccessible()
     {
         $this->testAction('/');
-        $this->assertNoErrors();
     }
     
     public function testIfContactIsAccessible()
     {
         $this->testAction('/contato', array('method' => 'get'));
-        $this->assertNoErrors();
     }
     
     
-    /**
-     * @expectedException SocketException
-     */
     public function testIfIsSendingContact()
     {
         $data = array('Contact' => array(
@@ -45,6 +36,10 @@ class PagesControllerTest extends ControllerTestCase
             'subject' => 'teste',
             'message' => 'teste'
         ));
+        
+        $email = $this->generate('Pages', array('components' => array('Email' => array('sendContactEmail')))); 
+
+        $email->Email->expects($this->once())->method('sendContactEmail')->will($this->returnValue(true));
         
         $this->testAction('/contato', array('data' => $data, 'method' => 'post'));
     }
@@ -98,6 +93,26 @@ class PagesControllerTest extends ControllerTestCase
         
         $this->testAction('/admin/pages/index/sobre', array('data' => $data, 'method' => 'post'));
         $this->assertNoErrors();
+    }
+    
+    
+    public function testIfIsSendingEmail()
+    {
+        $contactData = array(
+            'Contact' => array(
+                'email' => 'teste@teste.com.br',
+                'subject' => 'teste',
+                'name' => 'teste',
+                'message' => 'twste')
+        );
+        
+        $contact = $this->generate('Pages', array('components' => array('Email' => array('sendContactEmail')))); 
+
+        $contact->Email->expects($this->once())->method('sendContactEmail')->will($this->returnValue(true));
+        
+        $this->testAction('/contato', array('data' => $contactData, 'method' => 'post'));
+        
+        $this->assertNotNull($this->headers['Location']);
     }
 
 }

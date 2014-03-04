@@ -1,5 +1,5 @@
 <?php
-
+App::uses('ModelBehavior', 'Model');
 /**
  * Upload Behavior
  * 
@@ -21,20 +21,34 @@ class UploadBehavior extends ModelBehavior
     function setup(Model $model, $config = array())
     {
         $this->settings[$model->alias] = $config;
-        $this->path = 'img/photos/';
-        $this->width = 256;
+        $this->path = isset($config['path']) ? $config['path'] : 'img/photos/';
+        $this->width = isset($config['width']) ? $config['width'] : 256;
 
-        $this->_createDirectoryIfDoesntExist();
+        $this->__createDirectoryIfNotExists();
+    }
+    
+    /**
+     * 
+     * @param Model $model
+     * @param type $type
+     * @return \UploadBehavior
+     */
+    public function allowType( Model $model, $type )
+    {
+        array_push($this->allowedTypes, $type);
+        return $this;
     }
     
     /**
      * 
      * @param Model $model
      * @param int $width
+     * @return \UploadBehavior
      */
     public function setWidth(Model $model, $width )
     {
         $this->width = $width;
+        return $this;
     }
     
     
@@ -45,12 +59,17 @@ class UploadBehavior extends ModelBehavior
      */
     public function doTheUpload(Model $model, $data)
     {
-        $image = '';
+        $image = 'error';
         if ( in_array($data['type'], $this->allowedTypes) ) {
-            if(move_uploaded_file($data['tmp_name'], $this->path . $data['name'])) {
-                $this->_makeThumbnail($data['name']);
-                $image = $data['name'];
+            
+            if ( !is_uploaded_file($data['tmp_name']) ) {
+                copy($data['tmp_name'], $this->path . $data['name']);
+            } else {
+                move_uploaded_file($data['tmp_name'], $this->path . $data['name']);
             }
+            
+            $this->_makeThumbnail($data['name']);
+            $image = $data['name'];
         }
 
         return $image;
@@ -66,20 +85,17 @@ class UploadBehavior extends ModelBehavior
         $file = explode('/', $file);
         $fileName = end($file);
         
-        unlink($this->path . $fileName);
-        unlink($this->path . 'thumb_' . $fileName);
-    }
-    
-    
-    /**
-     *
-     */
-    protected function _createDirectoryIfDoesntExist()
-    {
-        if ( !is_dir($this->path) ) {
-            mkdir($this->path, 0777, true);
+        if ( file_exists($this->path . $fileName) ) {
+            unlink($this->path . $fileName);
         }
+        
+        if ( file_exists($this->path . 'thumb_' . $fileName) ) {
+            unlink($this->path . 'thumb_' . $fileName);
+        }
+        
+        return true;
     }
+    
     
     /**
      * 
@@ -100,7 +116,7 @@ class UploadBehavior extends ModelBehavior
                 $sourceImage = imagecreatefrompng($this->path . $image);
                 break;
             default:
-                break;
+                return false;
         }
         
         //Reading actual file width and height
@@ -108,7 +124,7 @@ class UploadBehavior extends ModelBehavior
         $originalHeight = imagesy($sourceImage);
         
         //calculating new Height based on width preserving aspect ratio
-        $newHeight = floor($height * ($this->width / $width));
+        $newHeight = floor($originalHeight * ($this->width / $originalWidth));
         
         // base to new image following new width and height
         $temporaryImage = imagecreatetruecolor($this->width, $newHeight);
@@ -126,10 +142,20 @@ class UploadBehavior extends ModelBehavior
             case 'png':
                 imagepng($temporaryImage, $newImage);
                 break;
-            default:
-                break;
         }
         
+        return true;
+    }
+    
+    /**
+     * 
+     * @return boolean
+     */
+    private function __createDirectoryIfNotExists()
+    {
+        if ( !is_dir($this->path) ) {
+            mkdir($this->path, 2777, true);
+        }
         return true;
     }
     

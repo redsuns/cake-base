@@ -3,6 +3,9 @@ App::uses('View', 'View');
 App::uses('AppHelper', 'View/Helper');
 App::uses('GoogleMapsIframeHelper', 'View/Helper');
 
+/**
+ * @group App
+ */
 class GoogleMapsIframeHelperTest extends CakeTestCase
 {
     

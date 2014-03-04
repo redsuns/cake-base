@@ -3,7 +3,7 @@ App::uses('GroupsController', 'Controller');
 
 /**
  * GroupsController Test Case
- *
+ * @group App
  */
 class GroupsControllerTest extends ControllerTestCase {
 

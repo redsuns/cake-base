@@ -5,7 +5,7 @@ App::uses('CakeEmail', 'Utility');
 
 /**
  * UsersController Test Case
- *
+ * @group App
  */
 class UsersControllerTest extends ControllerTestCase {
 
@@ -54,6 +54,10 @@ class UsersControllerTest extends ControllerTestCase {
         public function login()
         {
             $data = array('User' => array('username' => 'andrecardosodev@gmail.com', 'password' => 'andre'));
+            
+            $login = $this->generate('Users', array('components' => array('Auth' => array('login')))); 
+
+            $login->Auth->expects($this->once())->method('login')->will($this->returnValue(true));
             
             $this->testAction('/users/login', array('data' => $data, 'method' => 'post'));
         }
@@ -202,15 +206,17 @@ class UsersControllerTest extends ControllerTestCase {
         {
             $data = array('User' => array('username' => 'andrecardosodev@gmail.com', 'password' => 'andre'));
             
+            $login = $this->generate('Users', array('components' => array('Auth' => array('login')))); 
+
+            $login->Auth->expects($this->once())->method('login')->will($this->returnValue(true));
+            
             $this->testAction('/admin/users/login', array('data' => $data, 'method' => 'post'));
-            $this->assertNoErrors();
         }
         
         
         public function testAdminLogout()
         {
             $this->testAction('/admin/users/logout');
-            $this->assertNoErrors();
         }
         
         
@@ -220,8 +226,7 @@ class UsersControllerTest extends ControllerTestCase {
             
             $this->testAction('/admin/users');
             
-            $this->assertNotEquals(null, $this->vars['users']);
-            $this->assertNoErrors();
+            $this->assertNotEquals(null, $this->vars['users']); 
 	}
         
         
@@ -254,16 +259,18 @@ class UsersControllerTest extends ControllerTestCase {
         }
         
         
-        /**
-         * @expectedException SocketException
-         */
+        
         public function testAdminAddSendingEmail() 
         {
             $data = $this->userData();
             $data['User']['send_email'] = 1;
             
+            $email = $this->generate('Users', array('components' => array('Email' => array('sendUserRegisterEmail')))); 
+
+            $email->Email->expects($this->once())->method('sendUserRegisterEmail')->will($this->returnValue(true));
+            
             $this->testAction('/admin/users/add', array('data' => $data, 'method' => 'post'));
-	}
+        }
         
         
         public function testAdminAddWithErrors() 
