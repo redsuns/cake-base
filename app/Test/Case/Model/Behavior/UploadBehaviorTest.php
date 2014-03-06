@@ -1,6 +1,7 @@
 <?php
 App::uses('Photo', 'Model');
 App::uses('UploadBehavior', 'Model/Behavior');
+App::uses('Folder', 'Utility');
 
 /**
  * @group App
@@ -29,19 +30,23 @@ class UploadBehaviorTest extends CakeTestCase
     
     public function tearDown() 
     {
-        
         @unlink($this->originPath . 'avatar_tmp.png');
         @unlink($this->originPath . 'logo-face_tmp.jpg');
         @unlink($this->originPath . 'jquery.wysiwyg_tmp.gif');
-        @unlink($this->destinationPath . 'avatar.png');
-        @unlink($this->destinationPath . 'logo-face.jpg');
-        @unlink($this->destinationPath . 'jquery.wysiwyg.gif');
-        @unlink($this->destinationPath . 'thumb_avatar.png');
-        @unlink($this->destinationPath . 'thumb_logo-face.jpg');
-        @rmdir($this->destinationPath);
+        
+        $folder = new Folder();
+        $folder->delete($this->destinationPath);
+        
 
         unset($this->class, $this->behavior, $this->model, $this->originPath, $this->destinationPath);
         parent::tearDown();
+    }
+    
+    public function testSetUp()
+    {
+        $folder = new Folder();
+        $folder->delete($this->destinationPath);
+        $this->behavior->setWidth($this->model, array('path' => $this->destinationPath));
     }
     
     public function testAllowType()
@@ -57,15 +62,15 @@ class UploadBehaviorTest extends CakeTestCase
     }
     
     
-    public function testDetachFile()
+    public function testRemoveFile()
     {
-        $file = $this->destinationPath . 'avatar.png';
-        $thumb = $this->destinationPath . 'thumb_avatar.png';
+        $fileName = $this->destinationPath . 'avatar.png';
+        $thumbName = $this->destinationPath . 'thumb_avatar.png';
         
-        copy($this->originPath . 'avatar.png', $file);
-        copy($this->originPath . 'avatar.png', $thumb);
+        $file = new File($this->originPath . 'avatar.png');
+        $file->copy($fileName);
         
-        $this->assertTrue($this->behavior->detachFile($this->model, $file));
+        $this->assertTrue($this->behavior->removeFile($this->model, $fileName));
     }
     
     
