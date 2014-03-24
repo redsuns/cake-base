@@ -1,5 +1,8 @@
 <?php
 App::uses('ModelBehavior', 'Model');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
+
 /**
  * Upload Behavior
  * 
@@ -17,11 +20,16 @@ class UploadBehavior extends ModelBehavior
     );
     protected $width;
     public $settings = array();
+    
+    public $defaults = array(
+        'path' => ''
+    );
 
     function setup(Model $model, $config = array())
     {
         $this->settings[$model->alias] = $config;
-        $this->path = isset($config['path']) ? $config['path'] : 'img/photos/';
+        $this->path = isset($config['path']) ? $config['path'] : ROOT . '/app/webroot/img/photos/';
+        $this->defaults['path'] = $this->path;
         $this->width = isset($config['width']) ? $config['width'] : 256;
 
         $this->__createDirectoryIfNotExists();
@@ -59,13 +67,17 @@ class UploadBehavior extends ModelBehavior
      */
     public function doTheUpload(Model $model, $data)
     {
+        $newName = $this->path . $data['name'];
+            
         $image = 'error';
         if ( in_array($data['type'], $this->allowedTypes) ) {
-            
+            $oldName = $data['tmp_name'];
+            $newName = $this->path . $data['name'];
+
             if ( !is_uploaded_file($data['tmp_name']) ) {
-                copy($data['tmp_name'], $this->path . $data['name']);
+                rename($oldName, $newName);
             } else {
-                move_uploaded_file($data['tmp_name'], $this->path . $data['name']);
+                move_uploaded_file($oldName, $newName);
             }
             
             $this->_makeThumbnail($data['name']);
@@ -78,20 +90,15 @@ class UploadBehavior extends ModelBehavior
     /**
      * 
      * @param Model $model
-     * @param string $file
+     * @param string $fileName
      */
-    public function detachFile(Model $model, $file)
-    {
-        $file = explode('/', $file);
-        $fileName = end($file);
+    public function removeFile(Model $model, $fileName)
+    {   
+        $file = new File($this->path . $fileName);
+        $file->delete();
         
-        if ( file_exists($this->path . $fileName) ) {
-            unlink($this->path . $fileName);
-        }
-        
-        if ( file_exists($this->path . 'thumb_' . $fileName) ) {
-            unlink($this->path . 'thumb_' . $fileName);
-        }
+        $thumb = new File($this->path . 'thumb_' . $fileName);
+        $thumb->delete();
         
         return true;
     }
@@ -148,13 +155,13 @@ class UploadBehavior extends ModelBehavior
     }
     
     /**
-     * 
-     * @return boolean
+     *
      */
     private function __createDirectoryIfNotExists()
     {
         if ( !is_dir($this->path) ) {
-            mkdir($this->path, 2777, true);
+            $folder = new Folder();
+            $folder->create($this->path, 0755);
         }
         return true;
     }
